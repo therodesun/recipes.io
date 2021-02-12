@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from './recipeTable';
+import Table from './RecipeTable';
 
 class tablePage extends Component {
    render() {

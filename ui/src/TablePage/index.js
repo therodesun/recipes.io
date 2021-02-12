@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './tablePage'
+import App from './TablePage'
 import './index.css'
 
 ReactDOM.render(<App />, document.getElementById('root'))
