@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Table from './recipeTable';
+import Table from './RecipeTable';
 
-class tablePage extends Component {
+class TablePage extends Component {
    render() {
       const recipes = [
       {
@@ -23,4 +23,5 @@ class tablePage extends Component {
       )
    }
 }
-export default tablePage
+
+export default TablePage

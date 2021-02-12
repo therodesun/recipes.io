@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 
-import Recipes from "./Recipes/Recipes";
+import TablePage from "./TablePage/TablePage";
 import Home from "./Home/Home";
 import history from './history';
 import RecipePage from './RecipePage/RecipePage';
@@ -12,9 +12,9 @@ export default class Routes extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/Recipes" component={Recipes} />
+                    <Route path="/RecipeTable" component={TablePage} />
                     <Route path="/RecipePage" component={RecipePage} />
-            
+                    
                 </Switch>
             </Router>
         )

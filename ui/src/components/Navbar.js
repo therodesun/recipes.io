@@ -12,7 +12,7 @@ const Navigation = (props) => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Nav.Link href="/" id="link0">Home</Nav.Link>
-                    <Nav.Link href="/Recipes" id="link1">Recipes</Nav.Link>
+                    <Nav.Link href="/RecipeTable" id="link1">Recipe Table</Nav.Link>
                     <Nav.Link href="/RecipePage" id="link2">Recipe Page</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
