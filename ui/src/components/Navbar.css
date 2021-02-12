@@ -1,3 +1,21 @@
 .btn-space {
     margin-right: 5px;
 }
+
+#link0, #link1, #link2 {
+    color: white;
+    padding-left: 30px;
+}
+
+#link0:hover, #link1:hover, #link2:hover {
+    color: grey;
+}
+
+#brand {
+    color:white;
+}
+
+#toggle {
+    background-color: #00000000;
+    border: none;
+}

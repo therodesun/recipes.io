@@ -1,0 +1,35 @@
+#ingredients, #right {
+	float:left;
+	height:40%;
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+	width:49%;
+	position:absolute;
+}
+
+#right {
+	left: 50%;
+}
+
+#ingredients {
+	left:1%;
+}
+
+#instructions {
+	bottom:0;
+	position: absolute;
+}
+
+#shopping {
+	left:40px;
+	top: -8px;
+	position:relative;
+}
+
+#title {
+	float: left;
+	top:-28px;
+	left: 20px;
+	position:relative;
+}
