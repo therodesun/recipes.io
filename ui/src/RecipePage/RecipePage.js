@@ -13,13 +13,29 @@ export default class RecipePage extends Component {
           </span>
           <span>
             <div id="ingredients">
-              <p>Ingredient list goes here</p>
+              <h3 id="ingr_title">Ingredients</h3>
+              <ul id="ingr_list">
+                <li>1 lb ground beef</li>
+                <li>1 zucchini</li>
+                <li>2 cups spinach</li>
+                <li>0.5 lb noodles</li>
+                <li>24 oz marinara</li>
+              </ul>
             </div>
             <div id="right">
-              <Image id="photo"></Image>
+              <img src="spaghetti.jpg" id="image"></img>
             </div>
           </span>
-          <div id="instructions"><p>Instructions go here</p></div>
+          <div id="instructions">
+            <h3 id="instr_title">Instructions</h3>
+              <ol id="ingr_list">
+                <li>Demo step 1</li>
+                <li>Demo step 2</li>
+                <li>Demo step 3</li>
+                <li>Demo step 4</li>
+                <li>Demo step 5</li>
+              </ol>
+          </div>
         </div>
       </div>
     );

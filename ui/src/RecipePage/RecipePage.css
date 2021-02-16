@@ -41,3 +41,52 @@
     left: 20px;
     position:relative;
 }
+
+#ingr_title {
+    left:20px;
+    position: absolute;
+}
+
+#instr_title {
+    left:20px;
+    position: absolute;
+}
+
+#ingr_list {
+    left: 20px;
+    top: 60px;
+    position: absolute;
+}
+
+#instr_list {
+    top: 60px;
+    position: absolute;
+}
+
+ol {
+  margin: 0 0 1.5em 30px;
+  padding: 0;
+  counter-reset: item;
+}
+
+ol > li {
+  margin: 0;
+  padding: 0 0 0 2em;
+  text-indent: -2em;
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: bold;
+  text-align: right;
+  content: counter(item) ".";
+}
+
+#image {
+    width:100%;
+    height:100%;
+}
