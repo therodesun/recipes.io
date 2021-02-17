@@ -9,15 +9,15 @@
 }
 
 #link0 {
-    padding-left: 30px;
+    left: 110px;
 }
 
 #link1 {
-    padding-left: 96px;
+    left: 176px;
 }
 
 #link2 {
-    padding-left: 210px;
+    left: 290px;
 }
 
 #link0:hover, #link1:hover, #link2:hover {
