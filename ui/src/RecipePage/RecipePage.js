@@ -8,7 +8,7 @@ export default class RecipePage extends Component {
       <div className="RecipePage">
         <div className="lander">
           <span>
-            <h1 id="title">Recipe Name</h1>
+            <h1 id="title">Spaghetti</h1>
             <Button variant="btn btn-success" id="shopping">Add to Shopping Cart</Button>
           </span>
           <span>
@@ -23,7 +23,7 @@ export default class RecipePage extends Component {
               </ul>
             </div>
             <div id="right">
-              <img src="spaghetti.jpg" id="image"></img>
+              <img src="https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg" id="image"></img>
             </div>
           </span>
           <div id="instructions">
