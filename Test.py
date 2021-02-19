@@ -3,7 +3,7 @@ import unittest
 
 class Testing(unittest.TestCase):
     def test_blank(self):
-        pass
+        self.assertTrue(True)
     
     def test_fail(self):
         self.assertTrue(False)
