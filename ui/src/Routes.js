@@ -5,6 +5,7 @@ import TablePage from "./TablePage/TablePage";
 import Home from "./Home/Home";
 import history from './history';
 import RecipePage from './RecipePage/RecipePage';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
 
 export default class Routes extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class Routes extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/RecipeTable" component={TablePage} />
                     <Route path="/RecipePage" component={RecipePage} />
-                    
+                    <Route path="/ShoppingCart" component={ShoppingCart} />
                 </Switch>
             </Router>
         )

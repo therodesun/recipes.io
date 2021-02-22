@@ -60,6 +60,7 @@
 
 #instr_list {
     top: 60px;
+    left: 18px;
     position: absolute;
 }
 
@@ -89,4 +90,23 @@ ol > li:before {
 #image {
     width:100%;
     height:100%;
+}
+
+#timer {
+    position:absolute;
+    right:60px;
+    top:80px;
+    float:left;
+}
+
+#timeicon {
+    position:absolute;
+    right: 5px;
+    top:3px;
+}
+
+#timeamt {
+   position:absolute;
+   right:25px;
+   width:90px;
 }
