@@ -15,6 +15,7 @@ const Navigation = (props) => {
                     <Nav.Link href="/RecipeTable" id="link1">Recipe Table</Nav.Link>
                     <Nav.Link href="/RecipePage" id="link2">Recipe Page</Nav.Link>
                     <Nav.Link href="/ShoppingCart" id="link3">Shopping Cart</Nav.Link>
+                    <Nav.Link href="/AddRecipe" id="link4">Add Recipe</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

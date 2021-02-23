@@ -2,7 +2,7 @@
     margin-right: 5px;
 }
 
-#link0, #link1, #link2, #link3 {
+#link0, #link1, #link2, #link3, #link4 {
     color: white;
     top: 20px;
     position: absolute;
@@ -22,6 +22,10 @@
 
 #link3 {
     left: 400px;
+}
+
+#link4 {
+    left: 525px;
 }
 
 #link0:hover, #link1:hover, #link2:hover, #link3:hover {
