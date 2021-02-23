@@ -6,12 +6,12 @@ class TablePage extends Component {
    render() {
       const recipes = [
       {
-         image: 1,
+         image: "https://static.toiimg.com/photo/53110049.cms",
          name: 'Pizza',
          time: '30 minutes',
       },
       {
-         image: 2,
+         image: "https://www.stickees.com/files/food/food-and-drinks/3859-chicken-sticker.png",
          name: 'Chicken',
          time: '45 minutes',
       }
