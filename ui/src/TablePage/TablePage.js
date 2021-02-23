@@ -6,12 +6,12 @@ class TablePage extends Component {
    render() {
       const recipes = [
       {
-         id: 1,
+         image: 1,
          name: 'Pizza',
          time: '30 minutes',
       },
       {
-         id: 2,
+         image: 2,
          name: 'Chicken',
          time: '45 minutes',
       }

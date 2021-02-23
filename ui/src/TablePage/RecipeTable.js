@@ -17,7 +17,7 @@ const TableBody = props => {
    const rows = props.recipeData.map((row, index) => {
       return (
          <tr key = {index}>
-            <td>{row.id}</td> 
+            <td>{row.image}</td> 
             <td>{row.name}</td>
             <td>{row.time}</td>
          </tr>
