@@ -16,8 +16,9 @@ const TableHeader = () => {
 const TableBody = props => {
    const rows = props.recipeData.map((row, index) => {
       return (
-         <tr key = {index}>
+         <tr key = {index} id="clickable">
             <td><img src = {row.image}></img></td> 
+            <td>{row.id}</td> 
             <td>{row.name}</td>
             <td>{row.time}</td>
          </tr>
