@@ -390,6 +390,11 @@ table {
   margin: 0 0 1.5rem 0;
 }
 
+#clickable:hover {
+  background-color: lightgrey;
+  cursor: pointer
+}
+
 ul li ul {
   margin-bottom: 0;
 }

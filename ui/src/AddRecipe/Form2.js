@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
-class Form extends Component {
+class Form2 extends Component {
   initialState = {
-    ingredient: '',
-    amount: '',
+    step: '',
   }
 
   state = this.initialState
@@ -22,23 +21,16 @@ class Form extends Component {
   }
 
   render() {
-  const { ingredient, amount } = this.state;
+  const { step } = this.state;
 
   return (
     <form>
-      <label htmlFor="ingredient">Ingredient</label>
+      <label htmlFor="step">Step</label>
       <input
         type="text"
-        name="ingredient"
-        id="ingredient"
-        value={ingredient}
-        onChange={this.handleChange} />
-      <label htmlFor="amount">Amount</label>
-      <input
-        type="text"
-        name="amount"
-        id="amount"
-        value={amount}
+        name="step"
+        id="step"
+        value={step}
         onChange={this.handleChange} />
       <input type="button" value="Add" onClick={this.submitForm} />
     </form>
@@ -46,5 +38,5 @@ class Form extends Component {
 }
 
 }
-export default Form;
+export default Form2;
 
