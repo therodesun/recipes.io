@@ -1,4 +1,4 @@
-mport React, { Component } from 'react';
+import React, { Component } from 'react';
 import Table from './Table';
 import Form from './Form';
 import Table2 from './Table2';
