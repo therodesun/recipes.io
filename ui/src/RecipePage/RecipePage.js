@@ -3,60 +3,47 @@ import { Button, Image } from 'react-bootstrap';
 import './RecipePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import IngredientsList from './IngredientsList'
-import InstructionsList from './InstructionsList'
+import IngredientsList from './IngredientsList';
+import InstructionsList from './InstructionsList';
+import axios from "axios";
 
 
 export default class RecipePage extends Component {
+
+  componentDidMount() {
+        axios.get('http://localhost:5000/recipe')
+          .then(res => {
+            const ingredients = res.data.ingredients;
+            const instructions = res.data.instructions;
+            const name = res.data.name;
+            const duration = res.data.duration
+            this.setState({ ingredients, instructions, name, duration });
+          })
+          .catch(function (error) {
+        //Not handling the error. Just logging into the console.
+            console.log(error);
+          });
+  }
+
+  state = {
+    ingredients: [],
+    instructions: [],
+    name:"",
+    duration:"",
+  }      
+
   render() {
-    
-    const ingredients = [
-      {
-        amount: "1 lb",
-        item: "ground beef",
-      }, 
-      {
-        amount: "1 whole",
-        item: "zucchini",
-      }, 
-      {
-        amount: "2 cups",
-        item: "spinach",
-      }, 
-      {
-        amount: "0.5 lb",
-        item: "noodles",
-      }, 
-      {
-        amount: "24 oz",
-        item: "marinara",
-      }, 
-    ]
-    
-    const instructions = [
-      {
-        step: "Boil noodles until soft",
-      },
-      {
-        step: "Slice zucchini, steam for 10 minutes",
-      },
-      {
-        step: "Cook ground beef until browned",
-      },
-      {
-        step: "Mix in marinara and zucchini",
-      },
-    ]
+    const {ingredients, instructions, name, duration} = this.state;
     
     return (
       
       <div className="RecipePage">
         <div className="lander">
           <span>
-            <h1 id="title">Spaghetti</h1>
+            <h1 id="title">{name}</h1>
             <Button variant="btn btn-success" id="shopping">Add to Shopping Cart</Button>
             <div id="timer">
-              <em id="timeamt">30 minutes</em>
+              <em id="timeamt">{duration}</em>
               <FontAwesomeIcon icon={faClock} id="timeicon"/>
             </div>
           </span>
@@ -78,3 +65,7 @@ export default class RecipePage extends Component {
     );
   }
 }
+
+
+
+

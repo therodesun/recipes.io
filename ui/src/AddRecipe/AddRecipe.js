@@ -1,10 +1,27 @@
-import React, { Component } from 'react'
-import Table from './Table'
-import Form from './Form'
-import Table2 from './Table2'
-import Form2 from './Form2'
+mport React, { Component } from 'react';
+import Table from './Table';
+import Form from './Form';
+import Table2 from './Table2';
+import Form2 from './Form2';
+import axios from "axios";
 
 class AddRecipe extends Component {
+
+    makePostCall(recipe){
+        return axios.post('http://localhost:5000/recipes', recipe)
+                    .then(function (response) {
+                       console.log(response);
+                       if (response.status === 201) {
+                          // change to recipe page
+                       } else {
+                          return false;
+                       }
+                    })
+                    .catch(function (error) {
+                       console.log(error);
+                       return false;
+                    });
+    }
 
     initialState = {
       ingredients: [],
@@ -44,11 +61,15 @@ class AddRecipe extends Component {
     }
 
     handleSubmit = ingredient => {
-        this.setState({ ingredients: [...this.state.ingredients, ingredient] });
+      this.setState({ ingredients: [...this.state.ingredients, ingredient] });
     }
     
     handleSubmit2 = instruction => {
-        this.setState({ instructions: [...this.state.instructions, instruction] });
+      this.setState({ instructions: [...this.state.instructions, instruction] });
+    }
+    
+    handleSubmit3 = () => {
+      this.makePostCall(this.state);
     }
 
     handleDelete = (ingredient, index) => {
@@ -56,7 +77,7 @@ class AddRecipe extends Component {
     }
     
     handleDelete2 = (instruction, index) => {
-        this.removeInstructions(index);
+        this.removeInstruction(index);
     }
 
     render() {
