@@ -13,7 +13,7 @@ class TablePage extends Component {
       },
       {
          image: "https://www.stickees.com/files/food/food-and-drinks/3859-chicken-sticker.png",
-         link: "https://www.youtube.com/",
+         link: "https://www.youtube.com/"
          name: 'Chicken',
          time: '45 minutes',
       }
