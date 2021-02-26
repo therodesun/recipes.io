@@ -153,8 +153,10 @@ sup {
 /**
  * Remove the border on images inside links in IE 10.
  */
-img {
+img.table {
   border-style: none;
+  height:100px;
+  width:auto;
 }
 
 /* Forms

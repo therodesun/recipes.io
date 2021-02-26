@@ -27,7 +27,7 @@ class AddRecipe extends Component {
       ingredients: [],
       instructions: [],
       name: "",
-      duration: "",
+      time: "",
     }
     
     state = this.initialState
