@@ -108,7 +108,7 @@ class AddRecipe extends Component {
           <Table2 instructionData={instructions} remove={this.handleDelete2} />
           <Form2 handleSubmit={this.handleSubmit2} />
           <button id="cancelButton">Cancel</button>
-          <button id="submitButton" onclick={this.handleSubmit3}>Submit</button>
+          <button id="submitButton" onClick={this.handleSubmit3}>Submit</button>
         </div>
       )
     }

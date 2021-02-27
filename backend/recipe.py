@@ -11,7 +11,7 @@ from flask_cors import CORS
 # import string
 
 # for mongo db
-from model import User
+from model import Recipe
 
 
 app = Flask(__name__)
@@ -30,12 +30,23 @@ recipe = {
 @app.route('/recipes', methods=['GET', 'POST'])
 def get_recipes():
    if request.method == 'GET':
-      recipes = User().find_all()
+      recipes = Recipe().find_all()
       return {"recipes_list": recipes}
    elif request.method == 'POST':
       recipeToAdd = request.get_json()
       # make DB request to add user
-      newRecipe = User(recipeToAdd)
+      newRecipe = Recipe(recipeToAdd)
       newRecipe.save()
       resp = jsonify(newRecipe), 201
       return resp
+
+# implement search by recipe name 
+@app.route('/recipes/<name>', methods=['GET'])
+def get_recipes_name(name):
+    if request.method =='GET':
+        #name_recipe = request.args.get('name')
+        recipe = Recipe().find_name(name)
+        if recipe is None:
+            return jsonify({"error": "Recipe not found"}), 404
+        return recipe
+        

@@ -32,15 +32,20 @@ class Model(dict):
             self.clear()
             return resp
 
-class User(Model):
+class Recipe(Model):
     db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
-    Collection = db_client['users']["recipes"]
+    collection = db_client['users']["recipes"]
     
     def find_all(self):
-        recipes = list(self.Collection.find())
+        recipes = list(self.collection.find())
         for recipe in recipes:
             recipe["_id"] = str(recipe["_id"])
         return recipes
-
+    def find_name(self,name):
+        recipes = list(self.collection.find({"name":name}))
+        for recipe in recipes: 
+            recipe["_id"] = str(recipe["_id"])
+        
+        return recipe
  
 
