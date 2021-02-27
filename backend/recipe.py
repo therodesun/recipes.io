@@ -29,18 +29,21 @@ recipe = {
 
 currentRecipe = None
 
-@app.route('/recipes', methods=['GET', 'POST'])
+@app.route('/recipes', methods=['GET', 'POST', 'DELETE'])
 def get_recipes():
-   if request.method == 'GET':
-      recipes = Recipe().find_all()
-      return {"recipes_list": recipes}
-   elif request.method == 'POST':
-      recipeToAdd = request.get_json()
-      # make DB request to add user
-      newRecipe = Recipe(recipeToAdd)
-      newRecipe.save()
-      resp = jsonify(newRecipe), 201
-      return resp
+    if request.method == 'GET':
+        recipes = Recipe().find_all()
+        return {"recipes_list": recipes}
+    elif request.method == 'POST':
+        recipeToAdd = request.get_json()
+        # make DB request to add user
+        newRecipe = Recipe(recipeToAdd)
+        newRecipe.save()
+        resp = jsonify(newRecipe), 201
+        return resp
+    elif request.method == 'DELETE':
+        Recipe().clearAll()
+        return jsonify({"success":"entries cleared"}), 200
 
 # implement search by recipe name 
 @app.route('/recipes/<name>', methods=['GET'])

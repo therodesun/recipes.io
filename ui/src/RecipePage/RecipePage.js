@@ -9,30 +9,30 @@ import axios from "axios";
 
 
 export default class RecipePage extends Component {
-  // componentDidMount() {
-  //       axios.get('http://localhost:5000/recipe')
-  //         .then(res => {
-  //           const ingredients = res.data.ingredients;
-  //           const instructions = res.data.instructions;
-  //           const name = res.data.name;
-  //           const duration = res.data.duration;
-  //           this.setState({ ingredients, instructions, name, duration });
-  //         })
-  //         .catch(function (error) {
-  //       //Not handling the error. Just logging into the console.
-  //           console.log(error);
-  //         });
-  // }
+  componentDidMount() {
+    axios.get('http://localhost:5000/recipe')
+     .then(res => {
+       const recipe = res.data;
+       this.setState({ recipe });
+       this.render();
+     })
+     .catch(function (error) {
+       //Not handling the error. Just logging into the console.
+       console.log(error);
+     });
+ }
 
   state = {
-    ingredients: ["saus",],
-    instructions: ["test",],
-    name:"Spaghetti",
-    duration:"",
+    recipe: {
+      response: false
+    }
   }
 
   render() {
-    const {ingredients, instructions, name, duration} = this.state;
+    if (!this.state.recipe.response){
+      return <div>(   Loading...  )</div>
+    }
+    const {ingredients, steps, name, time, imageURL} = this.state.recipe;
 
     return (
       <div className="RecipePage">
@@ -44,17 +44,17 @@ export default class RecipePage extends Component {
           <span>
             <div id="ingredients">
               <h3 id="ingr_title">Ingredients</h3>
-              <em id="timeamt">{duration}</em>
+              <em id="timeamt">{time}</em>
               <FontAwesomeIcon icon={faClock} id="timeicon"/>
               <IngredientsList recipeData={ingredients}/>
             </div>
             <div id="right">
-              <img src="https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg" id="image"></img>
+              <img src={imageURL} id="image"></img>
             </div>
           </span>
           <div id="instructions">
             <h3 id="instr_title">Instructions</h3>
-              <InstructionsList recipeData={instructions}/>
+              <InstructionsList recipeData={steps}/>
           </div>
         </div>
       </div>

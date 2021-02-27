@@ -47,3 +47,8 @@ class Recipe(Model):
         for recipe in recipes: 
             recipe["_id"] = str(recipe["_id"])
         return recipe
+
+    def clearAll(self):
+        for recipe in list(self.collection.find()):
+            resp = self.collection.remove({"_id": recipe["_id"]})
+        return resp

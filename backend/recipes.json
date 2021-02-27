@@ -1,31 +1,27 @@
 [
     {
         "name": "Crock Pot Roast",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "1",
-                "name": " beef roast",
-                "type": "Meat"
+                "name": " beef roast"
             },
             {
                 "quantity": "1 package",
-                "name": "brown gravy mix",
-                "type": "Baking"
+                "name": "brown gravy mix"
             },
             {
                 "quantity": "1 package",
-                "name": "dried Italian salad dressing mix",
-                "type": "Condiments"
+                "name": "dried Italian salad dressing mix"
             },
             {
                 "quantity": "1 package",
-                "name": "dry ranch dressing mix",
-                "type": "Condiments"
+                "name": "dry ranch dressing mix"
             },
             {
                 "quantity": "1/2 cup",
-                "name": "water",
-                "type": "Drinks"
+                "name": "water"
             }
         ],
         "steps": [
@@ -35,10 +31,12 @@
             "Cook on low for 7-9 hours."
         ],
         "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
-        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
+        "response":true
     },
     {
         "name": "Roasted Asparagus",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "1 lb",
@@ -69,10 +67,12 @@
             "They are great plain, but sometimes I serve them with a light vinaigrette if we need something acidic to balance out our meal."
         ],
         "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg",
-        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847"
+        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847",
+        "response":true
     },
     {
         "name": "Curried Lentils and Rice",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "1 quart",
@@ -107,10 +107,12 @@
             "Add rice and simmer for 20 minutes.",
             "Enjoy!"
         ],
-        "imageURL": "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg"
+        "imageURL": "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg",
+        "response":true
     },
     {
         "name": "Big Night Pizza",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "5 teaspoons",
@@ -162,10 +164,12 @@
             "Bake at 400 deg Fahrenheit for 15 minutes.",
             "Enjoy!"
         ],
-        "imageURL": "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg"
+        "imageURL": "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg",
+        "response":true
     },
     {
         "name": "Cranberry and Apple Stuffed Acorn Squash Recipe",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "2",
@@ -208,11 +212,13 @@
             "Bake for 30-40 more minutes, until squash tender.",
             "Enjoy!"
         ],
-        "imageURL": "http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg",
+        "imageURL": "http://elanaspantry.com/wp-content/uploads/2008/10/acorn_squash_with_cranberry.jpg",,
+        "response":true,
         "originalURL": ""
     },
     {
         "name": "Mic's Yorkshire Puds",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "200g",
@@ -247,70 +253,60 @@
             "Bake for 30 minutes until well browned and risen."
         ],
         "imageURL": "http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg",
-        "originalURL": "http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg"
+        "originalURL": "http://upload.wikimedia.org/wikipedia/commons/f/f9/Yorkshire_Pudding.jpg",
+        "response":true
     },
     {
         "name": "Old-Fashioned Oatmeal Cookies",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "1 cup",
-                "name": "raisins",
-                "type": "Produce"
+                "name": "raisins"
             },
             {
                 "quantity": "1",
-                "name": "cup water",
-                "type": "Drinks"
+                "name": "cup water"
             },
             {
                 "quantity": "3/4 cup",
-                "name": "shortening",
-                "type": "Baking"
+                "name": "shortening"
             },
             {
                 "quantity": "1 1/2 cups",
-                "name": "sugar",
-                "type": "Baking"
+                "name": "sugar"
             },
             {
                 "quantity": "2 1/2 cups",
-                "name": "flour",
-                "type": "Baking"
+                "name": "flour"
             },
             {
                 "quantity": "1 tsp.",
-                "name": "soda",
-                "type": "Baking"
+                "name": "soda"
             },
             {
                 "quantity": "1 tsp.",
-                "name": "salt",
-                "type": "Baking"
+                "name": "salt"
             },
             {
                 "quantity": "1 tsp.",
-                "name": "cinnamon",
-                "type": "Baking"
+                "name": "cinnamon"
             },
             {
                 "quantity": "1/2 tsp.",
-                "name": "baking powder",
-                "type": "Baking"
+                "name": "baking powder"
             },
             {
                 "quantity": "1/2 tsp.",
-                "name": "cloves",
-                "type": "Baking"
+                "name": "cloves"
             },
             {
                 "quantity": "2 cups",
-                "name": "oats",
-                "type": "Baking"
+                "name": "oats"
             },
             {
                 "quantity": "1/2 cup",
-                "name": "chopped nuts",
-                "type": "Baking"
+                "name": "chopped nuts"
             }
         ],
         "steps": [
@@ -325,61 +321,53 @@
             "Bake 8 to 10 minutes or until light brown.",
             "About 6 1/2 dozen cookies."
         ],
-        "imageURL": "http://s3.amazonaws.com/gmi-digital-library/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg",
+        "imageURL": "http://s3.amazonaws.com/gmi-digital-library/65caecf7-a8f7-4a09-8513-2659cf92871e.jpg",,
+        "response":true,
         "originalURL": "#"
     },
     {
         "name": "Blueberry Oatmeal Squares",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "2-1/2 cups",
-                "name": "rolled oats, (not instant)",
-                "type": "Baking"
+                "name": "rolled oats, (not instant)"
             },
             {
                 "quantity": "1-1/4 cups",
-                "name": "all-purpose flour",
-                "type": "Baking"
+                "name": "all-purpose flour"
             },
             {
                 "quantity": "1 tbsp",
-                "name": "grated orange rind",
-                "type": "Produce"
+                "name": "grated orange rind"
             },
             {
                 "quantity": "1/4 tsp",
-                "name": "salt",
-                "type": "Baking"
+                "name": "salt"
             },
             {
                 "quantity": "1 cup",
-                "name": "cold butter, cubed",
-                "type": "Baking"
+                "name": "cold butter, cubed"
             },
             {
                 "quantity": "3/4 cup",
-                "name": "packed brown sugar",
-                "type": "Baking"
+                "name": "packed brown sugar"
             },
             {
                 "quantity": "3 cups",
-                "name": "fresh blueberries",
-                "type": "Produce"
+                "name": "fresh blueberries"
             },
             {
                 "quantity": "1/2 cup",
-                "name": "granulated sugar",
-                "type": "Baking"
+                "name": "granulated sugar"
             },
             {
                 "quantity": "1/3 cup",
-                "name": "orange juice",
-                "type": "Produce"
+                "name": "orange juice"
             },
             {
                 "quantity": "4 tsp",
-                "name": "cornstarch",
-                "type": "Baking"
+                "name": "cornstarch"
             }
         ],
         "steps": [
@@ -393,70 +381,60 @@
             "(Make-ahead: Cover and refrigerate for up to 2 days or overwrap with heavy-duty foil and freeze for up to 2 weeks.)"
         ],
         "imageURL": "http://www.canadianliving.com/img/photos/biz/blueberry-oatmeal-squares5801359401371.jpg",
-        "originalURL": "http://www.canadianliving.com/food/blueberry_oatmeal_squares.php"
+        "originalURL": "http://www.canadianliving.com/food/blueberry_oatmeal_squares.php",
+        "response":true
     },
     {
         "name": "Curried chicken salad",
+        "time": "30 minutes",
         "ingredients": [
             {
                 "quantity": "3",
-                "name": "skinless, boneless chicken breasts, halved lengthwise",
-                "type": "Meat"
+                "name": "skinless, boneless chicken breasts, halved lengthwise"
             },
             {
                 "quantity": "1/2 cup",
-                "name": "mayonnaise",
-                "type": "Baking"
+                "name": "mayonnaise"
             },
             {
                 "quantity": "1 tbsp",
-                "name": "lemon zest",
-                "type": "Produce"
+                "name": "lemon zest"
             },
             {
                 "quantity": "1 tbsp ",
-                "name": "lemon juice",
-                "type": "Produce"
+                "name": "lemon juice"
             },
             {
                 "quantity": "1 1/2 tsp",
-                "name": "curry powder",
-                "type": "Baking"
+                "name": "curry powder"
             },
             {
                 "quantity": "1/4 tsp",
-                "name": "salt",
-                "type": "Baking"
+                "name": "salt"
             },
             {
                 "quantity": "2",
-                "name": "ripe mangoes, diced",
-                "type": "Produce"
+                "name": "ripe mangoes, diced"
             },
             {
                 "quantity": "1/4 cup",
-                "name": "dried cranberries",
-                "type": "Produce"
+                "name": "dried cranberries"
             },
             {
                 "quantity": "2",
-                "name": "green onions, thinly sliced",
-                "type": "Produce"
+                "name": "green onions, thinly sliced"
             },
             {
                 "quantity": "1",
-                "name": "celery stalk, finely chopped",
-                "type": "Produce"
+                "name": "celery stalk, finely chopped"
             },
             {
                 "quantity": "6 leaves",
-                "name": "Boston lettuce",
-                "type": "Produce"
+                "name": "Boston lettuce"
             },
             {
                 "quantity": "6",
-                "name": "English muffins, toasted",
-                "type": "Misc"
+                "name": "English muffins, toasted"
             }
         ],
         "steps": [
@@ -471,6 +449,7 @@
             "Sandwich with tops"
         ],
         "imageURL": "http://www.chatelaine.com/wp-content/uploads/2013/05/Curried-chicken-salad.jpg",
-        "originalURL": "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/"
+        "originalURL": "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/",
+        "response":true
     }
 ]
