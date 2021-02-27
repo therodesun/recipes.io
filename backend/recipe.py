@@ -27,6 +27,8 @@ recipe = {
     'recipes_list':[]
 }
 
+currentRecipe = None
+
 @app.route('/recipes', methods=['GET', 'POST'])
 def get_recipes():
    if request.method == 'GET':
@@ -44,9 +46,16 @@ def get_recipes():
 @app.route('/recipes/<name>', methods=['GET'])
 def get_recipes_name(name):
     if request.method =='GET':
-        #name_recipe = request.args.get('name')
         recipe = Recipe().find_name(name)
-        if recipe is None:
-            return jsonify({"error": "Recipe not found"}), 404
-        return recipe
-        
+        global currentRecipe
+        currentRecipe = recipe
+        resp = jsonify({"success":"recipe loaded into cache"}), 200
+        return resp
+    return jsonify({"error":"recipe not found"}), 404
+
+@app.route('/recipe', methods=['GET'])
+def get_current():
+    global currentRecipe
+    if currentRecipe is not None:
+        return currentRecipe
+    return jsonify({"error":"recipe not found"}), 404

@@ -41,11 +41,9 @@ class Recipe(Model):
         for recipe in recipes:
             recipe["_id"] = str(recipe["_id"])
         return recipes
+
     def find_name(self,name):
         recipes = list(self.collection.find({"name":name}))
         for recipe in recipes: 
             recipe["_id"] = str(recipe["_id"])
-        
         return recipe
- 
-
