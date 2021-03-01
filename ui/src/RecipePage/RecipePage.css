@@ -9,6 +9,10 @@
     position:absolute;
 }
 
+body {
+    padding-bottom: 100px;
+}
+
 #right {
     left: 50%;
 }
@@ -106,7 +110,19 @@ ol > li:before {
 }
 
 #timeamt {
-   position:absolute;
-   right:25px;
-   width:90px;
+    position:absolute;
+    right:25px;
+    width:90px;
+}
+
+#submitButton {
+    position:absolute;
+    right:300px;
+    background-color:green;
+}
+
+#cancelButton {
+    position:absolute;
+    right:400px;
+    background-color:darkred;
 }
