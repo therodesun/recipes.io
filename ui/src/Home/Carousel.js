@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import history from './../history';
 
+
+
+function sendName(name) {
+    const nameURL = encodeURIComponent(name);
+    axios.get('http://localhost:5000/recipes/' + nameURL)
+        .then(res => {
+          console.log("success");
+          window.location.href = "http://localhost:3000/RecipePage";
+        })
+        .catch(function (error) {
+          //Not handling the error. Just logging into the console.
+          console.log(error);
+        });
+ }
+
+
+
 class Carousel extends Component {
     state = {  }
     render() { 
