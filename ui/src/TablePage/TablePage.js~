@@ -1,0 +1,30 @@
+import React, { Component } from 'react';
+import Table from './RecipeTable';
+import './index.css'
+
+class TablePage extends Component {
+   render() {
+      const recipes = [
+      {
+         image: "https://static.toiimg.com/photo/53110049.cms",
+         link: "https://www.google.com/",
+         name: 'Pizza',
+         time: '30 minutes',
+      },
+      {
+         image: "https://www.stickees.com/files/food/food-and-drinks/3859-chicken-sticker.png",
+         link: "https://www.youtube.com/"
+         name: 'Chicken',
+         time: '45 minutes',
+      }
+    ]
+      return (
+         <div className="container">
+            <h1>Recipe Table</h1>
+            <Table recipeData = {recipes} />
+         </div>
+      )
+   }
+}
+
+export default TablePage

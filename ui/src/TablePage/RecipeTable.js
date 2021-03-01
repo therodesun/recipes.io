@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+import axios from 'axios'
 
 const TableHeader = () => {
    return (
@@ -16,16 +17,27 @@ const TableHeader = () => {
 const TableBody = props => {
    const rows = props.recipeData.map((row, index) => {
       return (
-         <tr key = {index} id="clickable">
-            <td><img src = {row.image}></img></td> 
-            <td>{row.id}</td> 
+         <tr key = {index} id="clickable" onClick={() => sendName(row.name)}>
+            <td><img src = {row.imageURL} class="table"></img></td>
             <td>{row.name}</td>
             <td>{row.time}</td>
          </tr>
       )
    })
-
    return <tbody>{rows}</tbody>
+}
+
+function sendName(name) {
+   const nameURL = encodeURIComponent(name);
+   axios.get('http://localhost:5000/recipes/?s=' + nameURL)
+       .then(res => {
+         console.log("success");
+         window.location.href = "http://localhost:3000/RecipePage";
+       })
+       .catch(function (error) {
+         //Not handling the error. Just logging into the console.
+         console.log(error);
+       });
 }
 
 class Table extends Component {

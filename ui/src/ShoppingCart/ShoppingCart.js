@@ -30,7 +30,7 @@ export default class ShoppingCart extends Component {
     ]
     const recipes = [
       {
-         id: 1,
+         image: "https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg",
          name: 'Spaghetti',
          time: '30 minutes',
       },

@@ -15,6 +15,7 @@ body {
 
 #right {
     left: 50%;
+    width:auto;
 }
 
 #ingredients {
@@ -92,7 +93,7 @@ ol > li:before {
 }
 
 #image {
-    width:100%;
+    object-fit:fill;
     height:100%;
 }
 
@@ -105,14 +106,17 @@ ol > li:before {
 
 #timeicon {
     position:absolute;
-    right: 5px;
-    top:3px;
+    right: 30px;
+    top:35px;
 }
 
 #timeamt {
     position:absolute;
     right:25px;
     width:90px;
+    right:45px;
+    width:90px;
+    top:32px;
 }
 
 #submitButton {
