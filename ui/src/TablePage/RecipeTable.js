@@ -29,7 +29,7 @@ const TableBody = props => {
 
 function sendName(name) {
    const nameURL = encodeURIComponent(name);
-   axios.get('http://localhost:5000/recipes/?s=' + nameURL)
+   axios.get('http://localhost:5000/recipes/' + nameURL)
        .then(res => {
          console.log("success");
          window.location.href = "http://localhost:3000/RecipePage";
