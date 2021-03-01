@@ -1,4 +1,16 @@
-#carousel_button
+#image
 {
-    width: 150000
-  }
+    height:100px;
+    width:auto;
+}
+
+#carousel {
+    height:300px;
+    top:115px;
+    width:600px;
+}
+
+#recommend
+{
+    justifyContent: 'center'
+}
