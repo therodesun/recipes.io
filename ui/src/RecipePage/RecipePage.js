@@ -10,17 +10,17 @@ import axios from "axios";
 
 export default class RecipePage extends Component {
   componentDidMount() {
-    axios.get('http://localhost:5000/recipe')
-     .then(res => {
-       const recipe = res.data;
-       this.setState({ recipe });
-       this.render();
-     })
-     .catch(function (error) {
-       //Not handling the error. Just logging into the console.
-       console.log(error);
-     });
- }
+      axios.get('http://localhost:5000/recipe')
+      .then(res => {
+        const recipe = res.data;
+        this.setState({ recipe });
+        this.render();
+      })
+      .catch(function (error) {
+        //Not handling the error. Just logging into the console.
+        console.log(error);
+      });
+  }
 
   state = {
     recipe: {
@@ -39,7 +39,7 @@ export default class RecipePage extends Component {
         <div className="lander">
           <span>
             <h1 id="title">{name}</h1>
-            <Button variant="btn btn-success" id="shopping">Add to Shopping Cart</Button>
+            <Button variant="btn btn-success" id="shopping" onClick={() => {sendIngredients(ingredients, this.state)}}>Add to Shopping Cart</Button>
           </span>
           <span>
             <div id="ingredients">
@@ -60,4 +60,25 @@ export default class RecipePage extends Component {
       </div>
     );
   }
+}
+
+function sendIngredients(ingredients, recipe) {
+    axios.post('http://localhost:5000/shopping', ingredients)
+        .then(res => {
+          console.log("success");
+        })
+        .catch(function (error) {
+          //Not handling the error. Just logging into the console.
+          console.log(error);
+        });
+       
+    axios.post('http://localhost:5000/myrecipes', recipe)
+        .then(res => {
+          console.log("success");
+          window.location.href = "http://localhost:3000/ShoppingCart";
+        })
+        .catch(function (error) {
+          //Not handling the error. Just logging into the console.
+          console.log(error);
+        });  
 }
