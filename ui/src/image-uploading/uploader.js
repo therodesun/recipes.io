@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+
+// const client_id = "f4ca50bc021558a" //"ff3a3f659d1a390"
 
 class App extends Component {
    state = {
@@ -12,18 +15,21 @@ class App extends Component {
    }
 
    uploadHelper = () => {
-      // Post call
+      /* Post call
       const fd = new FormData();
       fd.append("image", this.state.selectedFile);
       const config = {
           headers: {
-             Authorization: "Client-ID ff3a3f659d1a390",
-          }
-       }
-       axios.post('https://api.imgur.com/3/image', fd, config)
-      // .then(res => 
-      //    {console.log(res);
-      // });
+             // Authorization: "Client-ID {client_id}",
+             //...fd.getHeaders(),
+             Content-Type: image
+          },
+       };
+       //axios.post('https://api.imgur.com/3/upload', fd, config)
+      axios.post('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', fd, config)
+       .then(res => 
+          {console.log(res);
+       }); */
    }
 
    render() {
