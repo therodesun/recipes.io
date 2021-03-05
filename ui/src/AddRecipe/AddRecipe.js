@@ -28,6 +28,7 @@ class AddRecipe extends Component {
       instructions: [],
       name: "",
       time: "",
+      link: "",
     }
     
     state = this.initialState
@@ -81,7 +82,7 @@ class AddRecipe extends Component {
     }
 
     render() {
-      const { ingredients, instructions, name, duration } = this.state
+      const { ingredients, instructions, name, duration, link } = this.state
 
       return (
         <div className="container">
@@ -99,6 +100,13 @@ class AddRecipe extends Component {
               name="time"
               id="time"
               value={duration}
+              onChange={this.handleChange} />
+            <label htmlFor="link">Image Link</label>
+            <input
+              type="text"
+              name="link"
+              id="link"
+              value={link}
               onChange={this.handleChange} />
           </form>
           <h3>Ingredients</h3>
