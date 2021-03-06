@@ -46,10 +46,19 @@ class Recipe(Model):
     def find_name(self,name):
         recipes = list(self.collection.find({"name":name}))
         for recipe in recipes: 
-            recipe["_id"] = str(recipe["_id"])
+          recipe["_id"] = str(recipe["_id"])
         return recipe
 
     def clearAll(self):
         for recipe in list(self.collection.find()):
             resp = self.collection.remove({"_id": recipe["_id"]})
         return resp
+    
+    def deleteby_name(self,name):
+        recipes = list(self.collection.find({"name":name}))
+        for recipe in recipes:
+            recipe = self.collection.remove({"_id": recipe["_id"]})
+        return recipe
+
+
+
