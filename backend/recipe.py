@@ -55,8 +55,8 @@ def get_recipes():
         Recipe().clearAll()
         return jsonify({"success":"entries cleared"}), 200
 
-# implement search by recipe name 
-@app.route('/recipes/<name>', methods=['GET'])
+# implement search by recipe name and delete
+@app.route('/recipes/<name>', methods=['GET','DELETE'])
 def get_recipes_name(name):
     if request.method =='GET':
         recipe = Recipe().find_name(name)
@@ -64,7 +64,14 @@ def get_recipes_name(name):
         currentRecipe = recipe
         resp = jsonify({"success":"recipe loaded into cache"}), 200
         return resp
+    if request.method == 'DELETE': 
+         Recipe().deleteby_name(name)
+         resp = jsonify({"success":"recipe delete"}), 200
+         return resp
     return jsonify({"error":"recipe not found"}), 404
+
+    
+
 
 @app.route('/recipe', methods=['GET'])
 def get_current():
