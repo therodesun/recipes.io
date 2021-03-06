@@ -15,8 +15,8 @@ const TableBody = props => {
   const rows = props.ingredientData.map((row, index) => {
     return (
       <tr key={index}>
-        <td>{row.ingredient}</td>
-        <td>{row.amount}</td>
+        <td>{row.name}</td>
+        <td>{row.quantity}</td>
         <td>
           <button onClick={() => props.remove(row, index)}>Delete</button>
         </td>

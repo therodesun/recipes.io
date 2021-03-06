@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 class Form extends Component {
   initialState = {
-    ingredient: '',
-    amount: '',
+    name: '',
+    quantity: '',
   }
 
   state = this.initialState
@@ -22,25 +22,25 @@ class Form extends Component {
   }
 
   render() {
-  const { ingredient, amount } = this.state;
+  const { name, quantity } = this.state;
 
   return (
     <form>
-      <label htmlFor="ingredient">Ingredient</label>
+      <label htmlFor="name">Ingredient</label>
       <input
         type="text"
-        name="ingredient"
-        id="ingredient"
-        value={ingredient}
+        name="name"
+        id="name"
+        value={name}
         onChange={this.handleChange} />
-      <label htmlFor="amount">Amount</label>
+      <label htmlFor="quantity">Amount</label>
       <input
         type="text"
-        name="amount"
-        id="amount"
-        value={amount}
+        name="quantity"
+        id="quantity"
+        value={quantity}
         onChange={this.handleChange} />
-      <input type="button" value="Add" onClick={this.submitForm} />
+      <input type="button" value="Add" onClick={() => {this.submitForm()}} />
     </form>
   );
 }

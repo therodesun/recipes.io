@@ -8,7 +8,7 @@ export default class Home extends Component {
     return (
       <div className="Home">
         <div className="lander">
-          <h1>Welcome to Reci.p!</h1>
+          <h1 id="titleRecip">Welcome to Reci.p!</h1>
             <Search/>
             <Carousel/>
         </div>

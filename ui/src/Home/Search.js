@@ -6,7 +6,7 @@ class Search extends Component {
         return ( 
         <form action="RecipeTable/" method="get">
             <label htmlFor="header-search">
-                <span className="visually-hidden">Search recipes</span>
+                <span className="visually-hidden" id="searchTitle">Search recipes</span>
             </label>
             <input
                 type="text"
@@ -14,7 +14,7 @@ class Search extends Component {
                 placeholder="Search recipes"
                 name="s" 
             />
-            <button type="submit">Search</button>
+            <button type="submit" id="searchSubmit">Search</button>
         </form> 
         );
     }

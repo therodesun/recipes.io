@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const ListBody = props => {
    const rows = props.recipeData.map((row, index) => {
       return (
-        <li>{row.quantity} {row.name}</li>
+        <li key={index}>{row.quantity} {row.name}</li>
       )
    })
 

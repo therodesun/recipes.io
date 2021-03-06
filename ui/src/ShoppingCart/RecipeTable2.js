@@ -16,10 +16,10 @@ const TableHeader = () => {
 const TableBody = props => {
    const rows = props.recipeData.map((row, index) => {
       return (
-         <tr key = {index} id="clickable" onClick={() => sendName(row.recipe.name)}>
-            <td><img src = {row.recipe.imageURL} class="table"></img></td>
-            <td>{row.recipe.name}</td>
-            <td>{row.recipe.time}</td>
+         <tr key = {index} id="clickable" onClick={() => sendName(row.name)}>
+            <td><img src = {row.imageURL} class="table"></img></td>
+            <td>{row.name}</td>
+            <td>{row.time}</td>
          </tr>
       )
    })

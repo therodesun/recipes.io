@@ -14,7 +14,7 @@ const TableBody = props => {
   const rows = props.instructionData.map((row, index) => {
     return (
       <tr key={index}>
-        <td>{row.step}</td>
+        <td>{row}</td>
         <td>
           <button onClick={() => props.remove(row, index)}>Delete</button>
         </td>

@@ -7,6 +7,7 @@ import history from './history';
 import RecipePage from './RecipePage/RecipePage';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import AddRecipe from './AddRecipe/AddRecipe';
+import EditRecipe from './RecipePage/EditRecipe';
 
 export default class Routes extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class Routes extends Component {
                     <Route path="/RecipePage" component={RecipePage} />
                     <Route path="/ShoppingCart" component={ShoppingCart} />
                     <Route path="/AddRecipe" component={AddRecipe} />
+                    <Route path="/EditRecipe" component={EditRecipe} />
                 </Switch>
             </Router>
         )

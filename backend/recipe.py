@@ -71,7 +71,15 @@ def get_recipes_name(name):
     return jsonify({"error":"recipe not found"}), 404
 
     
-
+@app.route('/update', methods=['POST'])
+def update_recipe():
+    recipe = request.get_json()
+    newRecipe = Recipe().update(recipe)
+    if newRecipe is not None:
+        resp = jsonify({"success":"recipe updated"}), 201
+    else:
+        resp = jsonify({"error":"recipe not updated"}), 400
+    return resp
 
 @app.route('/recipe', methods=['GET'])
 def get_current():

@@ -13,8 +13,12 @@ export default class RecipePage extends Component {
       axios.get('http://localhost:5000/recipe')
       .then(res => {
         const recipe = res.data;
-        this.setState({ recipe });
-        this.render();
+        const ingredients = recipe.ingredients;
+        const name = recipe.name;
+        const steps = recipe.steps;
+        const time = recipe.time;
+        const imageURL = recipe.imageURL;
+        this.setState({ ingredients: ingredients, name: name, steps: steps, time: time, imageURL: imageURL, response: true });
       })
       .catch(function (error) {
         //Not handling the error. Just logging into the console.
@@ -23,16 +27,19 @@ export default class RecipePage extends Component {
   }
 
   state = {
-    recipe: {
-      response: false
-    }
+        ingredients: [],
+        steps: [],
+        name: "",
+        time: "",
+        imageURL: "",
+        response:false,
   }
 
   render() {
-    if (!this.state.recipe.response){
+    if (!this.state.response){
       return <div>(   Loading...  )</div>
     }
-    const {ingredients, steps, name, time, imageURL} = this.state.recipe;
+    const {ingredients, steps, name, time, imageURL} = this.state;
 
     return (
       <div className="RecipePage">
@@ -40,6 +47,8 @@ export default class RecipePage extends Component {
           <span>
             <h1 id="title">{name}</h1>
             <Button variant="btn btn-success" id="shopping" onClick={() => {sendIngredients(ingredients, this.state)}}>Add to Shopping Cart</Button>
+            <Button variant="btn btn-success" id="editBtn" onClick={() => {sendName(name)}}>Edit Recipe</Button>
+            <Button variant="btn btn-success" id="deleteBtn" onClick={() => {deleteRecipe(name)}}>Delete Recipe</Button>
           </span>
           <span>
             <div id="ingredients">
@@ -81,4 +90,30 @@ function sendIngredients(ingredients, recipe) {
           //Not handling the error. Just logging into the console.
           console.log(error);
         });  
+}
+
+function sendName(name) {
+   const nameURL = encodeURIComponent(name);
+   axios.get('http://localhost:5000/recipes/' + nameURL)
+       .then(res => {
+         console.log("success");
+         window.location.href = "http://localhost:3000/EditRecipe";
+       })
+       .catch(function (error) {
+         //Not handling the error. Just logging into the console.
+         console.log(error);
+       });
+}
+
+function deleteRecipe(name) {
+  const nameURL = encodeURIComponent(name);
+   axios.delete('http://localhost:5000/recipes/' + nameURL)
+       .then(res => {
+         console.log("success");
+         window.location.href = "http://localhost:3000/RecipeTable";
+       })
+       .catch(function (error) {
+         //Not handling the error. Just logging into the console.
+         console.log(error);
+       });
 }

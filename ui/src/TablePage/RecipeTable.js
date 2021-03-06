@@ -42,9 +42,7 @@ function sendName(name) {
 
 class Table extends Component {
    render() {
-      // Should temporarily be a fixed list on front end
       const { recipeData } = this.props // Using recipeData as variable name to pass through data from databases
-
       return (
          <table>
             <TableHeader />

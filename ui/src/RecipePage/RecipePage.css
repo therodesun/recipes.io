@@ -40,6 +40,18 @@ body {
     position:relative;
 }
 
+#editBtn {
+    left:50px;
+    top: -6px;
+    position:relative;
+}
+
+#deleteBtn {
+    left: 60px;
+    top: -6px;
+    position:relative;
+}
+
 #title {
     float: left;
     top:-28px;
@@ -118,6 +130,8 @@ ol > li:before {
     width:90px;
     top:32px;
 }
+
+
 
 #submitButton {
     position:absolute;

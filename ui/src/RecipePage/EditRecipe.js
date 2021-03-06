@@ -1,36 +1,54 @@
 import React, { Component } from 'react';
-import Table from './Table';
-import Form from './Form';
-import Table2 from './Table2';
-import Form2 from './Form2';
+import Table from '../AddRecipe/Table';
+import Form from '../AddRecipe/Form';
+import Table2 from '../AddRecipe/Table2';
+import Form2 from '../AddRecipe/Form2';
 import axios from "axios";
 
-class AddRecipe extends Component {
+class EditRecipe extends Component {
 
-    makePostCall(recipe){
-        const { name } = this.state;
-        return axios.post('http://localhost:5000/recipes', recipe)
-                    .then(function (response) {
-                       console.log(response);
-                       if (response.status === 201) {
-                          sendName(name);
-                       } else {
-                          return false;
-                       }
-                    })
-                    .catch(function (error) {
-                       console.log(error);
-                       return false;
-                    });
+    componentDidMount() {
+      axios.get('http://localhost:5000/recipe')
+      .then(res => {
+        const recipe = res.data;
+        const ingredients = recipe.ingredients;
+        const name = recipe.name;
+        const steps = recipe.steps;
+        const time = recipe.time;
+        const imageURL = recipe.imageURL;
+        this.setState({ ingredients: ingredients, name: name, steps: steps, time: time, imageURL: imageURL, response: true });
+        this.render();
+      })
+      .catch(function (error) {
+        //Not handling the error. Just logging into the console.
+        console.log(error);
+      });
+  }
+  
+  	makePostCall(recipe){
+      const { name } = this.state;
+      return axios.post('http://localhost:5000/update', this.state)
+                  .then(function (response) {
+                      console.log(response);
+                      if (response.status === 201) {
+                        sendName(name);
+                      } else {
+                        return false;
+                      }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                    return false;
+                  });
     }
 
     initialState = {
-      ingredients: [],
-      steps: [],
-      name: "",
-      time: "",
-      imageURL: "",
-      response:true,
+        ingredients: [],
+        steps: [],
+        name: "",
+        time: "",
+        imageURL: "",
+        response:false,
     }
     
     state = this.initialState
@@ -84,8 +102,11 @@ class AddRecipe extends Component {
     }
 
     render() {
-      const { ingredients, steps, name, time, imageURL } = this.state
-
+      if (!this.state.response){
+        return <div>(   Loading...  )</div>
+      }
+      const { ingredients, steps, name, time, imageURL } = this.state;
+      
       return (
         <div className="container">
           <form>
@@ -117,11 +138,15 @@ class AddRecipe extends Component {
           <h3>Instructions</h3>
           <Table2 instructionData={steps} remove={this.handleDelete2} />
           <Form2 handleSubmit={this.handleSubmit2} />
-          <button id="cancelButton">Cancel</button>
+          <button id="cancelButton" onClick={() => {goBack()}}>Cancel</button>
           <button id="submitButton" onClick={this.handleSubmit3}>Submit</button>
         </div>
       )
     }
+}
+
+function goBack() {
+  window.location.href = "http://localhost:3000/RecipePage"
 }
 
 function sendName(name) {
@@ -137,4 +162,4 @@ function sendName(name) {
        });
 }
 
-export default AddRecipe
+export default EditRecipe
