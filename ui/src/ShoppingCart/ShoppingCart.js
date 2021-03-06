@@ -1,40 +1,48 @@
 import React, { Component } from "react";
 import { Image } from 'react-bootstrap';
 import './ShoppingCart.css';
-import Table from '../TablePage/RecipeTable';
+import Table from './RecipeTable2';
 import IngredientsList from '../RecipePage/IngredientsList'
+import axios from "axios"
 
 export default class ShoppingCart extends Component {
+  componentDidMount() {
+    var recipes;
+    var ingredients;
+    axios.get('http://localhost:5000/myrecipes')
+      .then(res => {
+        recipes = res.data.recipes_list;
+        this.setState({recipes: recipes, responseRecipes: true});
+      })
+      .catch(function (error) {
+        //Not handling the error. Just logging into the console.
+        console.log(error);
+      });
+      
+    axios.get('http://localhost:5000/shopping')
+      .then(res => {
+        ingredients = res.data.ingredients;
+        this.setState({ingredients: ingredients, responseIngredients: true});
+      })
+      .catch(function (error) {
+        //Not handling the error. Just logging into the console.
+        console.log(error);
+      });
+  }
+  
+  state = {
+    recipes:[],
+    ingredients:[],
+    responseRecipes:false,
+    responseIngredients:false
+  }
+  
   render() {
-    const ingredients = [
-      {
-        amount: "1 lb",
-        item: "ground beef",
-      }, 
-      {
-        amount: "1 whole",
-        item: "zucchini",
-      }, 
-      {
-        amount: "2 cups",
-        item: "spinach",
-      }, 
-      {
-        amount: "0.5 lb",
-        item: "noodles",
-      }, 
-      {
-        amount: "24 oz",
-        item: "marinara",
-      }, 
-    ]
-    const recipes = [
-      {
-         image: "https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg",
-         name: 'Spaghetti',
-         time: '30 minutes',
-      },
-    ]
+    if (!(this.state.responseRecipes && this.state.responseIngredients)){
+      return <div>(   Loading...  )</div>
+    }
+    const {ingredients, recipes} = this.state;
+    console.log(this.state);
     return (
       <div className="ShoppingCart">
         <div className="lander">

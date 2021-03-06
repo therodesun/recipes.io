@@ -12,6 +12,8 @@ from flask_cors import CORS
 
 # for mongo db
 from model import Recipe
+from model import Shopping
+from model import MyRecipes
 
 
 app = Flask(__name__)
@@ -26,7 +28,16 @@ def get():
 recipe = {
     'recipes_list':[]
 }
-      
+
+
+shopping = {
+    'ingredients':[]
+}
+
+myrecipes = {
+    'recipes':[]
+}
+
 currentRecipe = None
 
 @app.route('/recipes', methods=['GET', 'POST', 'DELETE'])
@@ -36,7 +47,6 @@ def get_recipes():
         return {"recipes_list": recipes}
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
-        # make DB request to add user
         newRecipe = Recipe(recipeToAdd)
         newRecipe.save()
         resp = jsonify(newRecipe), 201
@@ -69,4 +79,33 @@ def get_current():
     if currentRecipe is not None:
         return currentRecipe
     return jsonify({"error":"recipe not found"}), 404
+    
+@app.route('/myrecipes', methods=['GET', 'POST', 'DELETE'])
+def get_myrecipes():
+    if request.method == 'GET':
+        recipes = MyRecipes().find_all()
+        return {"recipes_list": recipes}
+    elif request.method == 'POST':
+        recipeToAdd = request.get_json()
+        newRecipe = MyRecipes(recipeToAdd)
+        newRecipe.save()
+        resp = jsonify(newRecipe), 201
+        return resp
+    elif request.method == 'DELETE':
+        MyRecipes().clearAll()
+        return jsonify({"success":"entries cleared"}), 200
 
+@app.route('/shopping', methods=['GET', 'POST', 'DELETE'])
+def get_ingredients():
+    if request.method == 'GET':
+        ingredients = Shopping().find_all()
+        return {"ingredients": ingredients}
+    elif request.method == 'POST':
+        ingredientsToAdd = request.get_json()
+        for ingredient in ingredientsToAdd:
+            newRecipe = Shopping(ingredient)
+            newRecipe.save()
+        return jsonify({"success":"true"}), 201
+    elif request.method == 'DELETE':
+        Shopping().clearAll()
+        return jsonify({"success":"entries cleared"}), 200
