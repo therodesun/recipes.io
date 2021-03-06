@@ -32,37 +32,63 @@ class Model(dict):
             self.clear()
             return resp
 
-<<<<<<< HEAD
-class User(Model):
-    db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
-    Collection = db_client['users']["recipes"]
-    
-    def find_all(self):
-        recipes = list(self.Collection.find())
-=======
+
 class Recipe(Model):
     db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
     collection = db_client['users']["recipes"]
     
     def find_all(self):
         recipes = list(self.collection.find())
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
         for recipe in recipes:
             recipe["_id"] = str(recipe["_id"])
         return recipes
-
-<<<<<<< HEAD
- 
-
-=======
+        
     def find_name(self,name):
         recipes = list(self.collection.find({"name":name}))
         for recipe in recipes: 
-            recipe["_id"] = str(recipe["_id"])
+          recipe["_id"] = str(recipe["_id"])
         return recipe
+        
+    def clearAll(self):
+        for recipe in list(self.collection.find()):
+            resp = self.collection.remove({"_id": recipe["_id"]})
+        return resp
+
+class Shopping(Model):
+    db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
+    collection = db_client['users']["shopping"]
+    
+    def find_all(self):
+        ingredients = list(self.collection.find())
+        for ingredient in ingredients:
+            ingredient["_id"] = str(ingredient["_id"])
+        return ingredients
+        
+    def clearAll(self):
+        for ingredient in list(self.collection.find()):
+            resp = self.collection.remove({"_id": ingredient["_id"]})
+        return resp
+
+class MyRecipes(Model):
+    db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
+    collection = db_client['users']["myrecipes"]
+    
+    def find_all(self):
+        recipes = list(self.collection.find())
+        for recipe in recipes:
+            recipe["_id"] = str(recipe["_id"])
+        return recipes
 
     def clearAll(self):
         for recipe in list(self.collection.find()):
             resp = self.collection.remove({"_id": recipe["_id"]})
         return resp
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
+    
+    def deleteby_name(self,name):
+        recipes = list(self.collection.find({"name":name}))
+        for recipe in recipes:
+            recipe = self.collection.remove({"_id": recipe["_id"]})
+        return recipe
+
+
+

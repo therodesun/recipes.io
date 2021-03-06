@@ -29,6 +29,7 @@ class AddRecipe extends Component {
       name: "",
       time: "",
       imageURL: "",
+      response:true,
     }
     
     state = this.initialState

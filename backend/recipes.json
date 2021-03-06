@@ -1,33 +1,6 @@
 [
     {
         "name": "Crock Pot Roast",
-<<<<<<< HEAD
-        "ingredients": [
-            {
-                "quantity": "1",
-                "name": " beef roast",
-                "type": "Meat"
-            },
-            {
-                "quantity": "1 package",
-                "name": "brown gravy mix",
-                "type": "Baking"
-            },
-            {
-                "quantity": "1 package",
-                "name": "dried Italian salad dressing mix",
-                "type": "Condiments"
-            },
-            {
-                "quantity": "1 package",
-                "name": "dry ranch dressing mix",
-                "type": "Condiments"
-            },
-            {
-                "quantity": "1/2 cup",
-                "name": "water",
-                "type": "Drinks"
-=======
         "time": "30 minutes",
         "ingredients": [
             {
@@ -49,7 +22,6 @@
             {
                 "quantity": "1/2 cup",
                 "name": "water"
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
             }
         ],
         "steps": [
@@ -58,19 +30,6 @@
             "Pour the water around the roast.",
             "Cook on low for 7-9 hours."
         ],
-<<<<<<< HEAD
-        "timers": [
-            0,
-            0,
-            0,
-            420
-        ],
-        "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
-        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
-    },
-    {
-        "name": "Roasted Asparagus",
-=======
         "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
         "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
         "response":true
@@ -78,22 +37,18 @@
     {
         "name": "Roasted Asparagus",
         "time": "30 minutes",
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
         "ingredients": [
             {
                 "quantity": "1 lb",
-                "name": " asparagus",
-                "type": "Produce"
+                "name": " asparagus"
             },
             {
                 "quantity": "1 1/2 tbsp",
-                "name": "olive oil",
-                "type": "Condiments"
+                "name": "olive oil"
             },
             {
                 "quantity": "1/2 tsp",
-                "name": "kosher salt",
-                "type": "Baking"
+                "name": "kosher salt"
             }
         ],
         "steps": [
@@ -108,22 +63,22 @@
             "The tips of the spears will get very brown but watch them to prevent burning.",
             "They are great plain, but sometimes I serve them with a light vinaigrette if we need something acidic to balance out our meal."
         ],
-<<<<<<< HEAD
-        "timers": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            10,
-            0,
-            0,
-            0
-        ],
         "imageURL": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/50/84/7/picMcSyVd.jpg",
-        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847"
+        "originalURL": "http://www.food.com/recipe/roasted-asparagus-50847",
+        "response":true
     },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     {
         "name": "Curried Lentils and Rice",
 =======

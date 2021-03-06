@@ -21,21 +21,34 @@ function sendName(name) {
 
 
 class Carousel extends Component {
-    state = {  }
+    state = {
+        recipes: []
+      }
+     componentDidMount() {
+        axios.get('http://localhost:5000/recipes')
+         .then(res => {
+           const recipes = res.data.recipes_list;
+           this.setState({ recipes });
+         })
+         .catch(function (error) {console.log(error);}
+         );
+     }
+     
     render() { 
+        const {recipes} = this.state
         return ( 
             <div>
                 <h2 id = "recommend">
                     Recommended Recipes
                 </h2>
-                <Button  variant="btn btn-success" onClick={() => sendName("Roasted Asparagus")}>
+                <Button  variant="btn btn-success" onClick={() => sendName(recipes[Math.random() * recipes.legnth].name)}>
                     <div id = "carousel">
-                        <img class = "class" alt = '' src = "https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg" id="image"></img>
+                        <img class = "class" alt = 'https://c.ndtvimg.com/2020-01/n7thfo2o_spaghetti_625x300_28_January_20.jpg' src = {recipes[Math.random() * recipes.legnth].imageURL} id="image"></img>
                     </div>
                 </Button>
-                <Button  variant="btn btn-success" onClick={() => sendName("Roasted Asparagus")}>
+                <Button  variant="btn btn-success" onClick={() => sendName(recipes[Math.random() * recipes.legnth].name)}>
                     <div id = "carousel">
-                        <img class = "class" alt = '' src = "https://static.toiimg.com/photo/53110049.cms" id="image"></img>
+                        <img class = "class" alt = 'https://static.toiimg.com/photo/53110049.cms' src = {recipes[Math.random() * recipes.legnth].imageURL} id="image"></img>
                     </div>
                 </Button>
             </div>

@@ -11,11 +11,9 @@ from flask_cors import CORS
 # import string
 
 # for mongo db
-<<<<<<< HEAD
-from model import User
-=======
 from model import Recipe
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
+from model import Shopping
+from model import MyRecipes
 
 
 app = Flask(__name__)
@@ -31,20 +29,15 @@ recipe = {
     'recipes_list':[]
 }
 
-<<<<<<< HEAD
-@app.route('/recipes', methods=['GET', 'POST'])
-def get_recipes():
-   if request.method == 'GET':
-      recipes = User().find_all()
-      return {"recipes_list": recipes}
-   elif request.method == 'POST':
-      recipeToAdd = request.get_json()
-      # make DB request to add user
-      newRecipe = User(recipeToAdd)
-      newRecipe.save()
-      resp = jsonify(newRecipe), 201
-      return resp
-=======
+
+shopping = {
+    'ingredients':[]
+}
+
+myrecipes = {
+    'recipes':[]
+}
+
 currentRecipe = None
 
 @app.route('/recipes', methods=['GET', 'POST', 'DELETE'])
@@ -54,7 +47,6 @@ def get_recipes():
         return {"recipes_list": recipes}
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
-        # make DB request to add user
         newRecipe = Recipe(recipeToAdd)
         newRecipe.save()
         resp = jsonify(newRecipe), 201
@@ -63,8 +55,8 @@ def get_recipes():
         Recipe().clearAll()
         return jsonify({"success":"entries cleared"}), 200
 
-# implement search by recipe name 
-@app.route('/recipes/<name>', methods=['GET'])
+# implement search by recipe name and delete
+@app.route('/recipes/<name>', methods=['GET','DELETE'])
 def get_recipes_name(name):
     if request.method =='GET':
         recipe = Recipe().find_name(name)
@@ -72,7 +64,14 @@ def get_recipes_name(name):
         currentRecipe = recipe
         resp = jsonify({"success":"recipe loaded into cache"}), 200
         return resp
+    if request.method == 'DELETE': 
+         Recipe().deleteby_name(name)
+         resp = jsonify({"success":"recipe delete"}), 200
+         return resp
     return jsonify({"error":"recipe not found"}), 404
+
+    
+
 
 @app.route('/recipe', methods=['GET'])
 def get_current():
@@ -80,4 +79,33 @@ def get_current():
     if currentRecipe is not None:
         return currentRecipe
     return jsonify({"error":"recipe not found"}), 404
->>>>>>> 06d99dabf187803dac4cb00845305fdf894ed74d
+    
+@app.route('/myrecipes', methods=['GET', 'POST', 'DELETE'])
+def get_myrecipes():
+    if request.method == 'GET':
+        recipes = MyRecipes().find_all()
+        return {"recipes_list": recipes}
+    elif request.method == 'POST':
+        recipeToAdd = request.get_json()
+        newRecipe = MyRecipes(recipeToAdd)
+        newRecipe.save()
+        resp = jsonify(newRecipe), 201
+        return resp
+    elif request.method == 'DELETE':
+        MyRecipes().clearAll()
+        return jsonify({"success":"entries cleared"}), 200
+
+@app.route('/shopping', methods=['GET', 'POST', 'DELETE'])
+def get_ingredients():
+    if request.method == 'GET':
+        ingredients = Shopping().find_all()
+        return {"ingredients": ingredients}
+    elif request.method == 'POST':
+        ingredientsToAdd = request.get_json()
+        for ingredient in ingredientsToAdd:
+            newRecipe = Shopping(ingredient)
+            newRecipe.save()
+        return jsonify({"success":"true"}), 201
+    elif request.method == 'DELETE':
+        Shopping().clearAll()
+        return jsonify({"success":"entries cleared"}), 200
