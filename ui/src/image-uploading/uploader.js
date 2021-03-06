@@ -20,13 +20,10 @@ class App extends Component {
       fd.append("image", this.state.selectedFile);
       const config = {
           headers: {
-             // Authorization: "Client-ID {client_id}",
-             //...fd.getHeaders(),
-             Content-Type: image
+             Authorization: `Client-ID ${client_id}`,
           },
        };
-       //axios.post('https://api.imgur.com/3/upload', fd, config)
-      axios.post('https://www.googleapis.com/upload/drive/v3/files?uploadType=media', fd, config)
+       axios.post('https://api.imgur.com/3/upload', fd, config)
        .then(res => 
           {console.log(res);
        }); */
