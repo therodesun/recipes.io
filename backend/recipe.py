@@ -60,6 +60,8 @@ def get_recipes():
 def get_recipes_name(name):
     if request.method =='GET':
         recipe = Recipe().find_name(name)
+        if recipe is None:
+            return jsonify({"success":"entries cleared"}), 200
         global currentRecipe
         currentRecipe = recipe
         resp = jsonify({"success":"recipe loaded into cache"}), 200
