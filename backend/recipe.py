@@ -44,10 +44,14 @@ currentRecipe = None
 def get_recipes():
     if request.method == 'GET':
         recipes = Recipe().find_all()
-        return {"recipes_list": recipes}
+        if recipes is None: 
+            return jsonify({"error":"there is no recipe"}), 404
+        else :return {"recipes_list": recipes}
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
         newRecipe = Recipe(recipeToAdd)
+        if newRecipe is None:
+            return jsonify({"error":"there is no recipe"}), 404
         newRecipe.save()
         resp = jsonify(newRecipe), 201
         return resp
@@ -61,7 +65,7 @@ def get_recipes_name(name):
     if request.method =='GET':
         recipe = Recipe().find_name(name)
         if recipe is None:
-            return jsonify({"success":"entries cleared"}), 200
+            return jsonify({"error":"there is no recipe"}), 404
         global currentRecipe
         currentRecipe = recipe
         resp = jsonify({"success":"recipe loaded into cache"}), 200
@@ -87,17 +91,21 @@ def update_recipe():
 def get_current():
     global currentRecipe
     if currentRecipe is not None:
-        return currentRecipe
+        return currentRecipe, jsonify({"success":" "}), 200
     return jsonify({"error":"recipe not found"}), 404
     
 @app.route('/myrecipes', methods=['GET', 'POST', 'DELETE'])
 def get_myrecipes():
     if request.method == 'GET':
         recipes = MyRecipes().find_all()
-        return {"recipes_list": recipes}
+        if recipes is None:
+            return jsonify({"error":"recipes list is empty"}), 404
+        else : return {"recipes_list": recipes}
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
         newRecipe = MyRecipes(recipeToAdd)
+        if newRecipe is None: 
+            return jsonify({"error":"recipes list is empty"}), 404
         newRecipe.save()
         resp = jsonify(newRecipe), 201
         return resp
@@ -109,7 +117,9 @@ def get_myrecipes():
 def get_ingredients():
     if request.method == 'GET':
         ingredients = Shopping().find_all()
-        return {"ingredients": ingredients}
+        if ingredients is None:
+            return jsonify({"error":"recipes list is empty"}), 404
+        else : return {"ingredients": ingredients}
     elif request.method == 'POST':
         ingredientsToAdd = request.get_json()
         for ingredient in ingredientsToAdd:
