@@ -4,6 +4,7 @@ jobs:
       python: 3.8
       install: 
       - pip install Flask
+      - pip install flask-unittest
       script:
       - pytest ./backend/testing.py
 
