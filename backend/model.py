@@ -12,25 +12,7 @@ class Model(dict):
     def save(self):
         if not self._id:
             self.collection.insert(self)
-        else:
-            self.collection.update(
-                { "_id": ObjectId(self._id) }, self)
         self._id = str(self._id)
-
-    def reload(self):
-        if self._id:
-            result = self.collection.find_one({"_id": ObjectId(self._id)})
-            if result :
-                self.update(result)
-                self._id = str(self._id)
-                return True
-        return False
-
-    def remove(self):
-        if self._id:
-            resp = self.collection.remove({"_id": ObjectId(self._id)})
-            self.clear()
-            return resp
 
 
 class Recipe(Model):
@@ -71,6 +53,7 @@ class Shopping(Model):
         return ingredients
         
     def clearAll(self):
+        resp = None
         for ingredient in list(self.collection.find()):
             resp = self.collection.remove({"_id": ingredient["_id"]})
         return resp
@@ -86,15 +69,7 @@ class MyRecipes(Model):
         return recipes
 
     def clearAll(self):
+        resp = None
         for recipe in list(self.collection.find()):
             resp = self.collection.remove({"_id": recipe["_id"]})
         return resp
-    
-    def deleteby_name(self,name):
-        recipes = list(self.collection.find({"name":name}))
-        for recipe in recipes:
-            recipe = self.collection.remove({"_id": recipe["_id"]})
-        return recipe
-
-
-

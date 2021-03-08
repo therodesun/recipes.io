@@ -3,8 +3,6 @@ import { Button } from 'react-bootstrap';
 import history from './../history';
 import axios from 'axios'
 
-
-
 function sendName(name) {
     const nameURL = encodeURIComponent(name);
     axios.get('http://localhost:5000/recipes/' + nameURL)

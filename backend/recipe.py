@@ -19,11 +19,8 @@ from model import MyRecipes
 app = Flask(__name__)
 #CORS stands for Cross Origin Requests.
 #Here we'll allow requests coming from any domain. Not recommended for production environment.
-CORS(app) 
-#print
-@app.route('/')
-def get():
-    return 'HI'
+CORS(app)
+
 # create list 
 recipe = {
     'recipes_list':[]
@@ -44,14 +41,14 @@ currentRecipe = None
 def get_recipes():
     if request.method == 'GET':
         recipes = Recipe().find_all()
-        if recipes is not None:
+        if recipes is not None and len(recipes) > 0:
             return jsonify({"recipes_list": recipes}), 200
         return jsonify({"error": "recipe not found"}), 404
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
         newRecipe = Recipe(recipeToAdd)
         newRecipe.save()
-        if recipeToAdd is not None:
+        if "name" in recipeToAdd:
             resp = jsonify(newRecipe), 201
         else:
             resp = jsonify({"error": "something went wrong"}), 400
@@ -65,13 +62,13 @@ def get_recipes():
 def get_recipes_name(name):
     if request.method == 'GET':
         recipe = Recipe().find_name(name)
-        if recipe is not None:
+        if recipe is not None and len(recipe) != 1:
             global currentRecipe
             currentRecipe = recipe
             resp = jsonify({"success":"recipe loaded into cache"}), 200
             return resp
         else:
-            return jsonify({"error":"recipe not found"})
+            return jsonify({"error":"recipe not found"}), 404
     if request.method == 'DELETE':
          Recipe().deleteby_name(name)
          resp = jsonify({"success":"recipe delete"}), 200
@@ -88,18 +85,18 @@ def get_current():
 def get_myrecipes():
     if request.method == 'GET':
         recipes = MyRecipes().find_all()
-        if recipes is not None:
+        if recipes is not None and len(recipes) > 0:
             return jsonify({"recipes_list": recipes}), 200
         else:
             return jsonify({"error":"recipes not found"}), 404
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
+        if "name" not in recipeToAdd:
+            resp = jsonify({"error": "something went wrong"}), 400
+            return resp
         newRecipe = MyRecipes(recipeToAdd)
         newRecipe.save()
-        if newRecipe is not None:
-            resp = jsonify(newRecipe), 201
-        else:
-            resp = jsonify({"error": "something went wrong"}), 400
+        resp = jsonify(newRecipe), 201
         return resp
     elif request.method == 'DELETE':
         MyRecipes().clearAll()
@@ -114,17 +111,22 @@ def get_ingredients():
         else:
             return jsonify({"error":"ingredients not found"}), 404
     elif request.method == 'POST':
-        ingredientsToAdd = request.get_json()["ingredients"]
-        count = 0
-        for ingredient in ingredientsToAdd:
-            count = count + 1
-            newRecipe = Shopping(ingredient)
-            newRecipe.save()
-            if newRecipe is None:
-                return jsonify({"error": "something went wrong"}), 400
-        if count == 0:
-            return jsonify({"error": "something went wrong"}), 400
-        return jsonify({"success":"ingredients added"}), 201
+        temp = request.get_json()
+        if "ingredients" in temp:
+            ingredientsToAdd = temp["ingredients"]
+            for ingredient in ingredientsToAdd:
+                newRecipe = Shopping(ingredient)
+                newRecipe.save()
+            return jsonify({"success":"ingredients added"}), 201
+        return jsonify({"error": "something went wrong"}), 400
     elif request.method == 'DELETE':
         Shopping().clearAll()
         return jsonify({"success":"entries cleared"}), 200
+        
+@app.route('/update', methods=['POST'])
+def update_recipe():
+    recipe = request.get_json()
+    if recipe is not None and "name" in recipe:
+        newRecipe = Recipe().update(recipe)
+        return jsonify({"success":"recipe updated"}), 201
+    return jsonify({"error":"recipe not updated"}), 400
