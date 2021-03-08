@@ -5,6 +5,8 @@ jobs:
       install: 
       - pip install Flask
       - pip install flask-unittest
+      - pip install flask_cors
+      - pip install pymongo 
       script:
       - pytest ./backend/testing.py
 
