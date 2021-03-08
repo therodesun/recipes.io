@@ -31,7 +31,7 @@ Database: Install MongoDB. Windows: https://docs.mongodb.com/manual/tutorial/ins
 
 In order to connect the database with the backend, install pymongo in the python virtual environment of the backend by running 'pip install pymongo' in command line
 
-**To run the project
+**To run the project**
 
 Front end: 
 
