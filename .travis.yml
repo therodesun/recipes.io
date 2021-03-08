@@ -3,7 +3,7 @@ jobs:
     - language: python
       python: 3.8
       script:
-      - pytest testing.py
+      - pytest ./backend/testing.py
 
     - language: node_js
       node_js: 12
