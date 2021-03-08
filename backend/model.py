@@ -11,7 +11,7 @@ class Model(dict):
 
     def save(self):
         if not self._id:
-            self.collection.insert(self)
+            self.collection.insert_one(self)
         self._id = str(self._id)
 
 
@@ -33,11 +33,11 @@ class Recipe(Model):
         
     def clearAll(self):
         for recipe in list(self.collection.find()):
-            resp = self.collection.remove({"_id": recipe["_id"]})
+            resp = self.collection.delete_one({"_id": recipe["_id"]})
         return resp
         
     def update(self, recipe):
-        return self.collection.update({'name' : recipe['name']}, { '$set': { 'name' : recipe['name'], 'ingredients' : recipe['ingredients'], 'steps' : recipe['steps'], 'time': recipe['time'], 'imageURL' : recipe['imageURL'] }})
+        return self.collection.update_one({'name' : recipe['name']}, { '$set': { 'name' : recipe['name'], 'ingredients' : recipe['ingredients'], 'steps' : recipe['steps'], 'time': recipe['time'], 'imageURL' : recipe['imageURL'] }})
         
     def deleteby_name(self, name):
         return self.collection.delete_one({'name' : name})
@@ -55,7 +55,7 @@ class Shopping(Model):
     def clearAll(self):
         resp = None
         for ingredient in list(self.collection.find()):
-            resp = self.collection.remove({"_id": ingredient["_id"]})
+            resp = self.collection.delete_one({"_id": ingredient["_id"]})
         return resp
 
 class MyRecipes(Model):
@@ -71,5 +71,5 @@ class MyRecipes(Model):
     def clearAll(self):
         resp = None
         for recipe in list(self.collection.find()):
-            resp = self.collection.remove({"_id": recipe["_id"]})
+            resp = self.collection.delete_one({"_id": recipe["_id"]})
         return resp
