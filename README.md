@@ -30,3 +30,19 @@ Connecting the front and back: Install the javascript axios library by running t
 Database: Install MongoDB. Windows: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/ Mac: https://github.com/mongodb/homebrew-brew Linux: https://docs.mongodb.com/manual/administration/install-on-linux/
 
 In order to connect the database with the backend, install pymongo in the python virtual environment of the backend by running 'pip install pymongo' in command line
+
+**To run the project**
+
+Front end: 
+
+* cd /recipes.io/ui
+
+* npm start
+
+Back end:
+
+* cd /recipes.io/backend
+
+* export FLASK_APP=recipe.py
+
+* flask run

@@ -2,13 +2,20 @@ jobs:
   include:
     - language: python
       python: 3.8
+      services:
+      - mongodb
+      install: 
+      - pip install Flask
+      - pip install flask-unittest
+      - pip install flask_cors
+      - pip install pymongo
+      before_script:
+      - sleep 15
+      - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
       script:
-      - python -c "print('Hi from Python!')"
+      - pytest ./backend/testing.py
 
     - language: node_js
       node_js: 12
       script:
       - node -e "console.log('Hi from NodeJS!')"
-
-script:
-  - python testing.py
