@@ -7,6 +7,7 @@ import axios from "axios";
 
 class AddRecipe extends Component {
 
+    // submit recipe
     makePostCall(recipe){
         const { name } = this.state;
         return axios.post('http://localhost:5000/recipes', recipe)
@@ -63,22 +64,27 @@ class AddRecipe extends Component {
       })
     }
 
+    // submit ingredients
     handleSubmit = ingredient => {
       this.setState({ ingredients: [...this.state.ingredients, ingredient] });
     }
     
+    // submit instructions
     handleSubmit2 = instruction => {
       this.setState({ steps: [...this.state.steps, instruction.step] });
     }
     
+    // submit recipe changes
     handleSubmit3 = () => {
       this.makePostCall(this.state);
     }
 
+    // delete ingredient
     handleDelete = (ingredient, index) => {
         this.removeIngredient(index);
     }
     
+    // delete instruction
     handleDelete2 = (instruction, index) => {
         this.removeInstruction(index);
     }
@@ -124,6 +130,7 @@ class AddRecipe extends Component {
     }
 }
 
+// load recipe in database cache for recipe page
 function sendName(name) {
    const nameURL = encodeURIComponent(name);
    axios.get('http://localhost:5000/recipes/' + nameURL)

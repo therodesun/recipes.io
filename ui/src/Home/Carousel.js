@@ -38,9 +38,11 @@ class Carousel extends Component {
             return <div id="loadingbar">(   Loading...  )</div>
         }
         const {recipes} = this.state;
+        // get two random indices
         var rand1 = Math.floor(Math.random() * (recipes.length));
         var rand2 = Math.floor(Math.random() * (recipes.length));
         if (rand1 == rand2) {
+            // prevent duplicate index
             if (rand1 + 1 < recipes.length) {
                 rand1 = rand1 + 1;
             } else if (rand1 - 1 >= 0) {

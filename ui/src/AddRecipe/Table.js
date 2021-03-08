@@ -11,6 +11,7 @@ const TableHeader = () => {
   )
 }
 
+// fill out with ingredient data
 const TableBody = props => {
   const rows = props.ingredientData.map((row, index) => {
     return (

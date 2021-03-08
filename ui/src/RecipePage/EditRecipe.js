@@ -6,7 +6,7 @@ import Form2 from '../AddRecipe/Form2';
 import axios from "axios";
 
 class EditRecipe extends Component {
-
+    // get all props from loaded recipe in database
     componentDidMount() {
       axios.get('http://localhost:5000/recipe')
       .then(res => {
@@ -24,7 +24,7 @@ class EditRecipe extends Component {
         console.log(error);
       });
   }
-  
+    // update, then revert to recipe page
   	makePostCall(recipe){
       const { name } = this.state;
       return axios.post('http://localhost:5000/update', this.state)
@@ -50,7 +50,7 @@ class EditRecipe extends Component {
         imageURL: "",
         response:false,
     }
-    
+    // initially empty state
     state = this.initialState
 
     handleChange = event => {
@@ -60,7 +60,7 @@ class EditRecipe extends Component {
         [name]: value,
       })
     }
-
+    
     removeInstruction = index => {
       const { steps } = this.state
 
@@ -80,28 +80,34 @@ class EditRecipe extends Component {
         }),
       })
     }
-
+  
+    // submit ingredients
     handleSubmit = ingredient => {
       this.setState({ ingredients: [...this.state.ingredients, ingredient] });
     }
     
+    // submit instructions
     handleSubmit2 = instruction => {
       this.setState({ steps: [...this.state.steps, instruction.step] });
     }
     
+    // submit recipe changes
     handleSubmit3 = () => {
       this.makePostCall(this.state);
     }
 
+    // delete ingredient
     handleDelete = (ingredient, index) => {
         this.removeIngredient(index);
     }
     
+    // delete instruction
     handleDelete2 = (instruction, index) => {
         this.removeInstruction(index);
     }
 
     render() {
+      //prevent page from prematurely attempting to access state variables
       if (!this.state.response){
         return <div>(   Loading...  )</div>
       }
@@ -145,10 +151,12 @@ class EditRecipe extends Component {
     }
 }
 
+// cancel button brings back to recipe page
 function goBack() {
   window.location.href = "http://localhost:3000/RecipePage"
 }
 
+// load recipe into database cache for recipe page
 function sendName(name) {
    const nameURL = encodeURIComponent(name);
    axios.get('http://localhost:5000/recipes/' + nameURL)

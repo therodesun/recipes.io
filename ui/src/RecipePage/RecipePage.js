@@ -9,6 +9,8 @@ import axios from "axios";
 
 
 export default class RecipePage extends Component {
+  
+  // getting recipe data
   componentDidMount() {
       axios.get('http://localhost:5000/recipe')
       .then(res => {
@@ -36,6 +38,7 @@ export default class RecipePage extends Component {
   }
 
   render() {
+    // prevent page from loading prematurely
     if (!this.state.response){
       return <div>(   Loading...  )</div>
     }
@@ -71,7 +74,9 @@ export default class RecipePage extends Component {
   }
 }
 
+// shopping cart function
 function sendIngredients(ingredients, recipe) {
+    // add to user ingredient list
     axios.post('http://localhost:5000/shopping', ingredients)
         .then(res => {
           console.log("success");
@@ -81,6 +86,7 @@ function sendIngredients(ingredients, recipe) {
           console.log(error);
         });
        
+    // add to user recipe list
     axios.post('http://localhost:5000/myrecipes', recipe)
         .then(res => {
           console.log("success");
@@ -92,6 +98,7 @@ function sendIngredients(ingredients, recipe) {
         });  
 }
 
+// load recipe into cache for edit recipe
 function sendName(name) {
    const nameURL = encodeURIComponent(name);
    axios.get('http://localhost:5000/recipes/' + nameURL)

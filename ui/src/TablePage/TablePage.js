@@ -7,6 +7,8 @@ class TablePage extends Component {
    state = {
       recipes: [],
     }
+    
+    // get all recipes
    componentDidMount() {
       axios.get('http://localhost:5000/recipes')
        .then(res => {
@@ -19,20 +21,6 @@ class TablePage extends Component {
        });
    }
    render() {
-     /* const recipes = [
-      {
-         image: "https://static.toiimg.com/photo/53110049.cms",
-         link: "https://www.google.com/",
-         name: 'Pizza',
-         time: '30 minutes',
-      },
-      {
-         image: "https://www.stickees.com/files/food/food-and-drinks/3859-chicken-sticker.png",
-         link: "https://www.youtube.com/",
-         name: 'Chicken',
-         time: '45 minutes',
-      }
-    ]*/
     const {recipes} = this.state
       return (
        
