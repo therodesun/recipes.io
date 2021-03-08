@@ -7,7 +7,7 @@ Project CI Page: https://travis-ci.com/github/therodesun/recipes.io
 
 **Diagrams**
 
-UI Prototype: https://www.figma.com/file/KyD6pFxzOh6RtUUyBgult2/Reci.P?node-id=0%3A1 Last Updated 2/3/21
+UI Prototype: https://www.figma.com/file/KyD6pFxzOh6RtUUyBgult2/Reci.P?node-id=0%3A1 Last Updated: 2/3/21
 
 UML Use Diagram: https://app.diagrams.net/#G1k5-pMzCaIBLEzz-6L6kYaYBWmw1fH75a Last Updated: 2/3/21
 
