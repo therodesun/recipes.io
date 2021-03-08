@@ -2,6 +2,8 @@ jobs:
   include:
     - language: python
       python: 3.8
+      install: 
+      - pip install Flask
       script:
       - pytest ./backend/testing.py
 
