@@ -5,8 +5,8 @@ class Search extends Component {
     render() { 
         return ( 
         <form action="RecipeTable/" method="get">
-            <label htmlFor="header-search">
-                <span className="visually-hidden" id="searchTitle">Search recipes</span>
+            <label id="searchTitle" htmlFor="header-search">
+                Search Recipes
             </label>
             <input
                 type="text"
