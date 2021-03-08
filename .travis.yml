@@ -11,4 +11,4 @@ jobs:
       - node -e "console.log('Hi from NodeJS!')"
 
 script:
-  - python testing.py
+  - pytest testing.py
