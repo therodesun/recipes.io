@@ -13,15 +13,24 @@ class TestStringMethods(unittest.TestCase):
     # test for post recipe list 
     def test_add_recipe(self):
         tester = app.test_client(self)
-        response = tester.post('/recipes',json={"name":"egg","time":"15 min"})
+        response = tester.post('/recipes',json={"name":"egg","time":"15 min"}, content_type='application/json',
+                              follow_redirects=True)
         self.assertEqual(response.status_code,201)
+        json_response = json.loads(response.get_data(as_text=True))
     
     # Testing if get returns the right page
     # need to post the data first
     def test_find_recipe(self):
         tester = app.test_client(self)
+        response = tester.post('/recipes',json={"name":"Roasted_Asparagus","time":"15 min"}, content_type='application/json',
+                              follow_redirects=True)
         response = tester.get('/recipes/Roasted_Asparagus')
+    
+        
         self.assertEqual(response.status_code, 200)
+        json_response = json.loads(response.get_data(as_text=True))
+        
+        
     
 
     # Testing proper error code 
@@ -29,11 +38,7 @@ class TestStringMethods(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/recipes/nonexistentrecipe1213123123123')
         self.assertEqual(response.status_code, 404)
-    # Test delete by name 
-    def test_delete_name(self):
-        tester = app.test_client(self)
-        response = tester.delete('/recipes/egg')
-        self.assertEqual(response.status_code, 200)
+
     # Testing update recipe
     def test_update(self):
         tester = app.test_client(self)
@@ -79,33 +84,84 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     # test get curret
+    # Dont need since nothing to do with db
     def test_current(self):
-        pass
+        pass 
+        
    
-    #test my recipes
-    def test_myrecipe_get(self):
-        pass
+
+    
+    # test when we return empty myrecipes 
     def test_myrecipe_get_fail(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.delete('/myrecipes')
+        response = tester.get('/myrecipes')
+        self.assertEqual(response.status_code,404)
     def test_myrecipe_post(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.post('/myrecipes',json={"name":"egg","time":"15 min"}, content_type='application/json',
+                              follow_redirects=True)
+        self.assertEqual(response.status_code,201)
+        json_response = json.loads(response.get_data(as_text=True))
     def test_myrecipe_post_fail(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.post('/myrecipes',json=None, content_type='application/json',
+                              follow_redirects=True)
+        self.assertEqual(response.status_code,404)
+        json_response = json.loads(response.get_data(as_text=True))
+     #test my recipes
+    def test_myrecipe_get(self):
+        tester = app.test_client(self)
+        response = tester.get('/myrecipes')
+        self.assertEqual(response.status_code,200)
     def test_my_recipe_delete(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.delete('/myrecipes')
+        self.assertEqual(response.status_code,200)
 
     #test shopping 
     
-    def test_shoppig_get(self):
-        pass
+   
     def test_shoppig_get_fail(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.get('/shopping')
+        self.assertEqual(response.status_code,404)
+    
     def test_shoppig_post(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.post('/shopping',json={"ingredients":"egg"}, content_type='application/json',
+                              follow_redirects=True)
+                              
+        self.assertEqual(response.status_code,201)
+        
     def test_shoppig_post_fail(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.post('/shopping',json=None, content_type='application/json',
+                              follow_redirects=True)
+        self.assertEqual(response.status_code,404)
+    def test_shoppig_get(self):
+        tester = app.test_client(self)
+        response = tester.get('/shopping')
+        self.assertEqual(response.status_code,200)
     def test_my_shoppig_delete(self):
-        pass
+        tester = app.test_client(self)
+        response = tester.delete('/shopping')
+        self.assertEqual(response.status_code,200)
+
+    # Test delete by name 
+    def test_delete_name(self):
+        tester = app.test_client(self)
+        response = tester.post('/recipes',json={"name":"hamburger","time":"15 min"}, content_type='application/json',
+                              follow_redirects=True)
+        response = tester.delete('/recipes/hamburger')
+        self.assertEqual(response.status_code, 200)
+        json_response = json.loads(response.get_data(as_text=True))
+
+# test delete 
+    def test_delete(self):
+        tester = app.test_client(self)
+        response = tester.delete('/recipes')
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':

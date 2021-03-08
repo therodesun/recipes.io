@@ -10,6 +10,7 @@ const TableHeader = () => {
   )
 }
 
+// fill out with instruction data
 const TableBody = props => {
   const rows = props.instructionData.map((row, index) => {
     return (

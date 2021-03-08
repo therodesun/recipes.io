@@ -55,33 +55,16 @@ def get_recipes():
         Recipe().clearAll()
         return jsonify({"success":"entries cleared"}), 200
 
-# implement search by recipe name and delete
-@app.route('/recipes/<name>', methods=['GET','DELETE'])
+# implement search by recipe name 
+@app.route('/recipes/<name>', methods=['GET'])
 def get_recipes_name(name):
     if request.method =='GET':
         recipe = Recipe().find_name(name)
-        if recipe is None:
-            return jsonify({"success":"entries cleared"}), 200
         global currentRecipe
         currentRecipe = recipe
         resp = jsonify({"success":"recipe loaded into cache"}), 200
         return resp
-    if request.method == 'DELETE': 
-         Recipe().deleteby_name(name)
-         resp = jsonify({"success":"recipe delete"}), 200
-         return resp
     return jsonify({"error":"recipe not found"}), 404
-
-    
-@app.route('/update', methods=['POST'])
-def update_recipe():
-    recipe = request.get_json()
-    newRecipe = Recipe().update(recipe)
-    if newRecipe is not None:
-        resp = jsonify({"success":"recipe updated"}), 201
-    else:
-        resp = jsonify({"error":"recipe not updated"}), 400
-    return resp
 
 @app.route('/recipe', methods=['GET'])
 def get_current():

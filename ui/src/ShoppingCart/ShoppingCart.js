@@ -6,12 +6,15 @@ import IngredientsList from '../RecipePage/IngredientsList'
 import axios from "axios"
 
 export default class ShoppingCart extends Component {
+  
+  // get my recipes list and ingredients list
   componentDidMount() {
     var recipes;
     var ingredients;
     axios.get('http://localhost:5000/myrecipes')
       .then(res => {
         recipes = res.data.recipes_list;
+        // responseRecipes prevents from rendering before recipe data is loaded
         this.setState({recipes: recipes, responseRecipes: true});
       })
       .catch(function (error) {
@@ -22,6 +25,7 @@ export default class ShoppingCart extends Component {
     axios.get('http://localhost:5000/shopping')
       .then(res => {
         ingredients = res.data.ingredients;
+        // responseIngredients prevents from rendering before ingredient data is loaded
         this.setState({ingredients: ingredients, responseIngredients: true});
       })
       .catch(function (error) {
@@ -38,6 +42,7 @@ export default class ShoppingCart extends Component {
   }
   
   render() {
+    // prevent premature loading
     if (!(this.state.responseRecipes && this.state.responseIngredients)){
       return <div>(   Loading...  )</div>
     }
