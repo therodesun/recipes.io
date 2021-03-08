@@ -77,7 +77,7 @@ export default class RecipePage extends Component {
 // shopping cart function
 function sendIngredients(ingredients, recipe) {
     // add to user ingredient list
-    axios.post('http://localhost:5000/shopping', ingredients)
+    axios.post('http://localhost:5000/shopping', {"ingredients":ingredients})
         .then(res => {
           console.log("success");
         })

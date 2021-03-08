@@ -44,45 +44,62 @@ currentRecipe = None
 def get_recipes():
     if request.method == 'GET':
         recipes = Recipe().find_all()
-        return {"recipes_list": recipes}
+        if recipes is not None:
+            return jsonify({"recipes_list": recipes}), 200
+        return jsonify({"error": "recipe not found"}), 404
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
         newRecipe = Recipe(recipeToAdd)
         newRecipe.save()
-        resp = jsonify(newRecipe), 201
+        if recipeToAdd is not None:
+            resp = jsonify(newRecipe), 201
+        else:
+            resp = jsonify({"error": "something went wrong"}), 400
         return resp
     elif request.method == 'DELETE':
         Recipe().clearAll()
         return jsonify({"success":"entries cleared"}), 200
 
 # implement search by recipe name 
-@app.route('/recipes/<name>', methods=['GET'])
+@app.route('/recipes/<name>', methods=['GET', 'DELETE'])
 def get_recipes_name(name):
-    if request.method =='GET':
+    if request.method == 'GET':
         recipe = Recipe().find_name(name)
-        global currentRecipe
-        currentRecipe = recipe
-        resp = jsonify({"success":"recipe loaded into cache"}), 200
-        return resp
-    return jsonify({"error":"recipe not found"}), 404
+        if recipe is not None:
+            global currentRecipe
+            currentRecipe = recipe
+            resp = jsonify({"success":"recipe loaded into cache"}), 200
+            return resp
+        else:
+            return jsonify({"error":"recipe not found"})
+    if request.method == 'DELETE':
+         Recipe().deleteby_name(name)
+         resp = jsonify({"success":"recipe delete"}), 200
+         return resp
 
 @app.route('/recipe', methods=['GET'])
 def get_current():
     global currentRecipe
     if currentRecipe is not None:
-        return currentRecipe
+        return jsonify(currentRecipe), 200
     return jsonify({"error":"recipe not found"}), 404
-    
+
 @app.route('/myrecipes', methods=['GET', 'POST', 'DELETE'])
 def get_myrecipes():
     if request.method == 'GET':
         recipes = MyRecipes().find_all()
-        return {"recipes_list": recipes}
+        if recipes is not None:
+            return jsonify({"recipes_list": recipes}), 200
+        else:
+            return jsonify({"error":"recipes not found"}), 404
     elif request.method == 'POST':
         recipeToAdd = request.get_json()
         newRecipe = MyRecipes(recipeToAdd)
         newRecipe.save()
-        resp = jsonify(newRecipe), 201
+        if newRecipe is not None:
+            resp = jsonify(newRecipe), 201
+        else:
+            resp = jsonify({"error": "something went wrong"}), 400
         return resp
     elif request.method == 'DELETE':
         MyRecipes().clearAll()
@@ -92,13 +109,22 @@ def get_myrecipes():
 def get_ingredients():
     if request.method == 'GET':
         ingredients = Shopping().find_all()
-        return {"ingredients": ingredients}
+        if ingredients is not None and len(ingredients) > 0:
+            return jsonify({"ingredients": ingredients}), 200
+        else:
+            return jsonify({"error":"ingredients not found"}), 404
     elif request.method == 'POST':
-        ingredientsToAdd = request.get_json()
+        ingredientsToAdd = request.get_json()["ingredients"]
+        count = 0
         for ingredient in ingredientsToAdd:
+            count = count + 1
             newRecipe = Shopping(ingredient)
             newRecipe.save()
-        return jsonify({"success":"true"}), 201
+            if newRecipe is None:
+                return jsonify({"error": "something went wrong"}), 400
+        if count == 0:
+            return jsonify({"error": "something went wrong"}), 400
+        return jsonify({"success":"ingredients added"}), 201
     elif request.method == 'DELETE':
         Shopping().clearAll()
         return jsonify({"success":"entries cleared"}), 200

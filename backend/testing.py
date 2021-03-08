@@ -29,9 +29,6 @@ class TestStringMethods(unittest.TestCase):
         
         self.assertEqual(response.status_code, 200)
         json_response = json.loads(response.get_data(as_text=True))
-        
-        
-    
 
     # Testing proper error code 
     def test_no_Recipe(self):
@@ -119,30 +116,44 @@ class TestStringMethods(unittest.TestCase):
         response = tester.delete('/myrecipes')
         self.assertEqual(response.status_code,200)
 
-    #test shopping 
-    
-   
-    def test_shoppig_get_fail(self):
-        tester = app.test_client(self)
-        response = tester.get('/shopping')
-        self.assertEqual(response.status_code,404)
-    
-    def test_shoppig_post(self):
-        tester = app.test_client(self)
-        response = tester.post('/shopping',json={"ingredients":"egg"}, content_type='application/json',
-                              follow_redirects=True)
-                              
-        self.assertEqual(response.status_code,201)
+    #test shopping
         
     def test_shoppig_post_fail(self):
         tester = app.test_client(self)
         response = tester.post('/shopping',json=None, content_type='application/json',
                               follow_redirects=True)
         self.assertEqual(response.status_code,404)
+        
+    def test_shoppig_get_fail(self):
+        tester = app.test_client(self)
+        response = tester.get('/shopping')
+        self.assertEqual(response.status_code,404)
+        
+    def test_shoppig_post(self):
+        tester = app.test_client(self)
+        response = tester.post('/shopping',json={"ingredients": [
+            {
+                "quantity": "1 lb",
+                "name": " asparagus"
+            },
+            {
+                "quantity": "1 1/2 tbsp",
+                "name": "olive oil"
+            },
+            {
+                "quantity": "1/2 tsp",
+                "name": "kosher salt"
+            }
+        ]}, content_type='application/json',
+                              follow_redirects=True)
+                              
+        self.assertEqual(response.status_code,201)
     def test_shoppig_get(self):
         tester = app.test_client(self)
         response = tester.get('/shopping')
         self.assertEqual(response.status_code,200)
+        response = tester.delete('/shopping')
+        
     def test_my_shoppig_delete(self):
         tester = app.test_client(self)
         response = tester.delete('/shopping')
@@ -151,7 +162,7 @@ class TestStringMethods(unittest.TestCase):
     # Test delete by name 
     def test_delete_name(self):
         tester = app.test_client(self)
-        response = tester.post('/recipes',json={"name":"hamburger","time":"15 min"}, content_type='application/json',
+        response = tester.post('/recipes',json={"name":"hamburger", "time":"15 min"}, content_type='application/json',
                               follow_redirects=True)
         response = tester.delete('/recipes/hamburger')
         self.assertEqual(response.status_code, 200)
@@ -160,8 +171,8 @@ class TestStringMethods(unittest.TestCase):
 # test delete 
     def test_delete(self):
         tester = app.test_client(self)
-        response = tester.delete('/recipes')
-        self.assertEqual(response.status_code, 200)
+#        response = tester.delete('/recipes')
+#        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':
