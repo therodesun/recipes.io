@@ -1,12 +1,15 @@
-#image
+#logoImage
 {
-    height:100px;
-    width:auto;
+  position:absolute;
+  width: 50%;
+  height:50px;
+  top:50px;
+  left:-15px;
 }
 
 #carousel {
     height:300px;
-    top:200px;
+    top:250px;
     width:600px;
 }
 
@@ -16,31 +19,31 @@
     left:25px;
     position:absolute;
     width: 300px;
-    top:150px;
+    top:200px;
 }
 
 #header-search {
     left:20px;
     position:absolute;
-    top:170px;
+    top:220px;
     width:calc(100% - 40px);
 }
 
 #searchSubmit {
     left:20px;
     position:absolute;
-    top:230px;
+    top:280px;
 }
 
 #recommend {
     left:20px;
     position:absolute;
-    top:270px;
+    top:320px;
 }
 
 #carousel1 {
     position:absolute;
-    top:300px;
+    top:350px;
     left:20px;
     background-color:rgb(110, 110, 110);
     border-color:rgb(110, 110, 110);
@@ -56,7 +59,7 @@
 
 #carousel2 {
     position:absolute;
-    top:300px;
+    top:350px;
     left:700px;
     background-color:rgb(110, 110, 110);
     border-color:rgb(110, 110, 110);
@@ -64,12 +67,12 @@
 
 #titleRecip {
     position:absolute;
-    left: 20px;
-    top:60px;
+    left:150px;
+    top:80px;
 }
 
 #loadingbar {
     position:absolute;
-    top: 300px;
+    top: 350px;
     left:20px;
 }

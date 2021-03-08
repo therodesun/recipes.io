@@ -42,10 +42,6 @@ export default class ShoppingCart extends Component {
   }
   
   render() {
-    // prevent premature loading
-    if (!(this.state.responseRecipes && this.state.responseIngredients)){
-      return <div>(   Loading...  )</div>
-    }
     const {ingredients, recipes} = this.state;
     console.log(this.state);
     return (

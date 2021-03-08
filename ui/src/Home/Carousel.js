@@ -33,7 +33,7 @@ class Carousel extends Component {
 
     render() { 
         if (!(this.state.response)){
-            return <div id="loadingbar">(   Loading...  )</div>
+            return <div id="loadingbar">No Recipes to Display</div>
         }
         const {recipes} = this.state;
         // get two random indices

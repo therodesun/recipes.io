@@ -40,7 +40,7 @@ export default class RecipePage extends Component {
   render() {
     // prevent page from loading prematurely
     if (!this.state.response){
-      return <div>(   Loading...  )</div>
+      return <div id="loadingbar">(Loading...)</div>
     }
     const {ingredients, steps, name, time, imageURL} = this.state;
 

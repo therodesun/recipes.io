@@ -116,14 +116,15 @@ class EditRecipe extends Component {
       return (
         <div className="container">
           <form>
-            <label htmlFor="ingredient">Recipe Name</label>
+            <label htmlFor="name">Recipe Name</label>
             <input
               type="text"
               name="name"
               id="name"
               value={name}
-              onChange={this.handleChange} />
-            <label htmlFor="amount">Duration</label>
+              onChange={this.handleChange}
+              readonly="readonly" />
+            <label htmlFor="time">Duration</label>
             <input
               type="text"
               name="time"
