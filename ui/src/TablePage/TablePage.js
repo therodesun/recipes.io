@@ -21,15 +21,28 @@ class TablePage extends Component {
        });
    }
    render() {
-    const {recipes} = this.state
-      return (
-       
-         <div className="container">
-            <h1>Recipe Table</h1>
-            <Table recipeData = {recipes} />
-         </div>
-      )
-   }
+      const {recipes} = this.state
+      const param = new URLSearchParams(window.location.search).get('s');
+      if (param != null) {
+         return (
+            <div className="container">
+               <h1>Recipe Table</h1>
+               <Table recipeData = {recipes.filter(function(recipe) {
+                  return recipe["name"].toLowerCase().includes(param.toLowerCase());
+               })} />
+            </div>
+         )
+      } else {
+         return (
+            <div className="container">
+               <h1>Recipe Table</h1>
+               <Table recipeData = {recipes} />
+            </div>
+         )
+      }
+   };
+      
 }
+
 
 export default TablePage
