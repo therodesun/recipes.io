@@ -1,10 +1,14 @@
-#logoImage
+#logoImagediv
 {
   position:absolute;
   width: 50%;
-  height:50px;
-  top:50px;
-  left:-15px;
+  height:0px;
+  top:75px;
+  left:0px;
+}
+
+#imageLogo {
+    height:150px;
 }
 
 #carousel {
@@ -13,13 +17,12 @@
     width:600px;
 }
 
-
-
 #searchTitle {
     left:25px;
     position:absolute;
     width: 300px;
     top:180px;
+    height:10px;
 }
 
 #header-search {

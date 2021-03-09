@@ -5,14 +5,14 @@ class Search extends Component {
     render() { 
         return ( 
         <form action="RecipeTable/" method="get">
-            <label id="searchTitle" htmlFor="header-search">
+            <label id="searchTitle" for="header-search">
                 Search Recipes
             </label>
             <input
                 type="text"
                 id="header-search"
-                placeholder="Search recipes"
-                name="s" 
+                name="s"
+                placeholder="Enter Recipe Name"
             />
             <button type="submit" id="searchSubmit">Search</button>
         </form> 

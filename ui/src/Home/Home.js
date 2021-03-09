@@ -11,12 +11,12 @@ export default class Home extends Component {
       <div className="Home">
         <div className="lander">
           <h1 id="titleRecip">Welcome to Reci.p!</h1>
-         
             <Search/>
             <Carousel/>
         </div>
-        <div id = "logoImage">
+        <div id = "logoImagediv">
         <img 
+        id="imageLogo"
         src= {img} 
         alt="new"
       />
