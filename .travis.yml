@@ -9,14 +9,14 @@ jobs:
       - pip install flask-unittest
       - pip install flask_cors
       - pip install pymongo
-      - pip install codecov
+      - pip install coverage
       before_script:
       - sleep 15
       - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
       script:
       - pytest ./backend/testing.py
       after_success:
-      - codecov
+      - coverage pytest ./backend/testing.py
 
     - language: node_js
       node_js: 12
