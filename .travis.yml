@@ -16,7 +16,7 @@ jobs:
       script:
       - pytest ./backend/testing.py
       after_success:
-      - coverage pytest ./backend/testing.py
+      - coverage run -m pytest ./backend/testing.py
       - coverage report -m ./backend/recipe.py ./backend/model.py
 
     - language: node_js
